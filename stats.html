@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stats - Gourmen</title>
+    <link rel="icon" href="images/logo_register.jpg" type="image/jpg" sizes="16x16">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://maxandul.github.io/Gourmen/stats.hmtl">
+    <meta property="og:title" content="Gourmen">
+    <meta property="og:description" content="Stats">
+    <meta property="og:image" content="https://maxandul.github.io/Gourmen/images/logo_register.jpg">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="kopfzeile">
+        <img class="logo-header" src="images/logo_rund.png">
+        <button class="hamburger">
+            <div class="bar"></div>
+        </button>
+    </header>
+    
+    <div class="mobile-nav">
+        <a href="index.html">Home</a>
+        <a href="billboy.html">BillBoy</a>
+        <a href="billbro.html">BillBro</a>
+        <a href="agenda.html">Agenda</a>
+        <a href="berichte.html">Berichte</a>
+        <a href="stats.html">Stats</a>
+    </div>
+    <script>
+        const menu_btn = document.querySelector('.hamburger');
+        const mobile_menu = document.querySelector('.mobile-nav');
+
+        menu_btn.addEventListener('click', function() { 
+            menu_btn.classList.toggle('is-active');
+            mobile_menu.classList.toggle('is-active');
+        });
+    </script>
+
+    <div class="inhalt">
+        <h1>Stats</h1>
+        <h2>Events</h2>
+        <p>Seit dem 21. Novemeber 2021 bis heute haben neben der Gründungsversammlung<br><br>
+                - 21 Monatsessen <br>
+                - 2 Vereinsausflüge und <br>
+                - 2 Generalversammlungen <br><br>
+        stattgefunden. Erst ein einziger offizieller Termin fiel mangels Teilnehmer aus. Keep it up!</p> 
+        <h2>Küche</h2> 
+        <p>Wir Gourmen sind Geschmacksentdecker und lieben die Küche aus aller Welt. Hier unsere Hitlist:</p>
+        <img class="stats-img-hochkant" src="images/küche.png" alt="küche_stats">
+    </div>
+    <footer>
+        <div class="footer">
+            <div class="footer-links">
+                <a href="mailto:frohvollenmaenllichen@gmail.com">
+                    <img src="images/mail_gold.png" alt="E-Mail">
+                </a>
+                <a href="https://www.instagram.com/thegourmen_zh/" target="_blank">
+                    <img src="images/insta_gold.png" alt="Instagram">
+                </a>
+            </div>
+            <p class="footer-text">Gourmen. Since 2021.</p>
+        </div>
+    </footer>
+</body>
+</html>
