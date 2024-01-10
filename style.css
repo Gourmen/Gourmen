@@ -14,7 +14,7 @@ html, body {
     flex-direction: column; /* Ordnet Elemente in einer Spalte an */
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 600px) {
     body {
     max-width: 600px;
     align-self: center;
