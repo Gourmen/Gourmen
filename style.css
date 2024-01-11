@@ -352,7 +352,7 @@ p {
     text-align: left;
     flex-basis: 50%; /* Stellt die Breite des Labels ein */
     padding-left: 15px;
-    color: #947F57;
+    color: #7C9D8E;
 }
 
 .rechner-zeile .input-rechner, .rechner-zeile select {
@@ -368,7 +368,7 @@ p {
 
 .button {
     color: #FFFFFF; /* Textfarbe */
-    background-color: #7C9D8E; /* Hintergrundfarbe */
+    background-color: #947F57; /* Hintergrundfarbe */
     border: none; /* Kein Rand */
     border-radius: 10px; /* Abgerundete Ecken */
     padding: 10px 15px; /* Innenabstand */
