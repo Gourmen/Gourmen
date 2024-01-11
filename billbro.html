@@ -1,376 +1,209 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BillBro - Gourmen</title>
-    <link rel="icon" href="images/logo_register.jpg" type="image/png" sizes="16x16">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://gourmen.github.io/Homepage/billbro.hmtl">
-    <meta property="og:title" content="Gourmen">
-    <meta property="og:description" content="BillBro">
-    <meta property="og:image" content="https://gourmen.github.io/Homepage/images/logo_register.png">
-</head>
-<body>
-    <header class="kopfzeile">
-        <img class="logo-header" src="images/logo_rund.png">
-        <button class="hamburger">
-            <div class="bar"></div>
-        </button>
-    </header>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>BillBro - Gourmen</title>
+        <link rel="icon" href="images/logo_register.jpg" type="image/png" sizes="16x16">
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://gourmen.github.io/Homepage/billbro.hmtl">
+        <meta property="og:title" content="Gourmen">
+        <meta property="og:description" content="BillBro">
+        <meta property="og:image" content="https://gourmen.github.io/Homepage/images/logo_register.png">
+    </head>
+    <body>
+        <header class="kopfzeile">
+            <img class="logo-header" src="images/logo_rund.png">
+            <button class="hamburger">
+                <div class="bar"></div>
+            </button>
+        </header>
 
-    <div class="mobile-nav">
-        <a href="index.html">Home</a>
-        <a href="billboy.html">BillBoy</a>
-        <a href="billbro.html">BillBro</a>
-        <a href="agenda.html">Agenda</a>
-        <a href="berichte.html">Berichte</a>
-        <a href="stats.html">Stats</a>
-    </div>
+        <div class="mobile-nav">
+            <a href="index.html">Home</a>
+            <a href="billboy.html">BillBoy</a>
+            <a href="billbro.html">BillBro</a>
+            <a href="agenda.html">Agenda</a>
+            <a href="berichte.html">Berichte</a>
+            <a href="stats.html">Stats</a>
+        </div>
 
-    <script>
-        const menu_btn = document.querySelector('.hamburger');
-        const mobile_menu = document.querySelector('.mobile-nav');
+        <div class="inhalt">
+            
+            <h1>BillBro</h1>
+            <p>BillBoys grosser Bruder. Teilt nicht nur fair, sondern kürt auch Sieger. Wer schätzt den Rechnungsbetrag am besten? Place your bets!
+                <br><br> Speichere die Ergebnisse und stelle die csv-Datei Andy für das Gesamtranking zu.
+                <br><br> Personen, die nicht anwesend sind, werden als "N/A" definiert. Sie erhalten automatisch CHF 300 Differenz im Gesamtranking dazugerechnet. Also bleib dran, wenn du die Saison gewinnen willst!           
+            </p>
 
-        menu_btn.addEventListener('click', function() { 
-            menu_btn.classList.toggle('is-active');
-            mobile_menu.classList.toggle('is-active');
-        });
-    </script>
+            <br>
+            <h2>Eingabefelder</h2>
 
-    <div class="inhalt">
-        
-        <h1>BillBro</h1>
-        <p>BillBoys grosser Bruder. Teilt nicht nur fair, sondern kürt auch Sieger. Wer schätzt den Rechnungsbetrag am besten? Place your bets!
-            <br><br> Speichere die Ergebnisse und stelle die csv-Datei Andy für das Gesamtranking zu.
-            <br><br> Personen, die nicht anwesend sind, werden als "N/A" definiert. Sie erhalten automatisch CHF 300 Differenz im Gesamtranking dazugerechnet. Also bleib dran, wenn du die Saison gewinnen willst!           
-        </p>
-        <br>
-        <h2>Eingabefelder</h2>
-        <div class="rechner">
-            <div class="rechner-zeile">
-                <label for="restaurant">Restaurant:</label>
-                <input class="text-input-rechner" type="text" id="restaurant" placeholder="Name des Restaurants">
+            <div class="rechner">
+                <div class="rechner-zeile">
+                    <label for="restaurant">Restaurant:</label>
+                    <input class="text-input-rechner" type="text" id="restaurant" placeholder="Name des Restaurants">
+                </div>
+                <div class="rechner-zeile">
+                    <label for="andy">Andy:</label>
+                    <select class="select-rechner" id="typAndy">
+                        <option value="NA">N/A</option>
+                        <option value="Vielfrass">Vielfrass</option>
+                        <option value="Genügsam">Genügsam</option>
+                    </select>
+                    <input class="tipp-rechner" type="number" id="betragAndy" min="0" placeholder="Tipp">
+                </div>
+                <div class="rechner-zeile">
+                    <label for="cedi">Cedi:</label>
+                    <select class="select-rechner" id="typCedi">
+                        <option value="NA">N/A</option>
+                        <option value="Vielfrass">Vielfrass</option>
+                        <option value="Genügsam">Genügsam</option>
+                    </select>
+                    <input class="tipp-rechner" type="number" id="betragCedi" min="0" placeholder="Tipp">
+                </div>
+                <div class="rechner-zeile">
+                    <label for="dave">Dave:</label>
+                    <select class="select-rechner" id="typDave">
+                        <option value="NA">N/A</option>
+                        <option value="Vielfrass">Vielfrass</option>
+                        <option value="Genügsam">Genügsam</option>
+                    </select>
+                    <input class="tipp-rechner" type="number" id="betragDave" min="0" placeholder="Tipp">
+                </div>
+                <div class="rechner-zeile">
+                    <label for="fabio">Fabio:</label>
+                    <select class="select-rechner" id="typFabio">
+                        <option value="NA">N/A</option>
+                        <option value="Vielfrass">Vielfrass</option>
+                        <option value="Genügsam">Genügsam</option>
+                    </select>
+                    <input class="tipp-rechner" type="number" id="betragFabio" min="0" placeholder="Tipp">
+                </div>
+                <div class="rechner-zeile">
+                    <label for="kevin">Kevin:</label>
+                    <select class="select-rechner" id="typKevin">
+                        <option value="NA">N/A</option>
+                        <option value="Vielfrass">Vielfrass</option>
+                        <option value="Genügsam">Genügsam</option>
+                    </select>
+                    <input class="tipp-rechner" type="number" id="betragKevin" min="0" placeholder="Tipp">
+                </div>
+                <div class="rechner-zeile">
+                    <label for="marco">Marco:</label>
+                    <select class="select-rechner" id="typMarco">
+                        <option value="NA">N/A</option>
+                        <option value="Vielfrass">Vielfrass</option>
+                        <option value="Genügsam">Genügsam</option>
+                    </select>
+                    <input class="tipp-rechner" type="number" id="betragMarco" min="0" placeholder="Tipp">
+                </div>
+                <div class="rechner-zeile">
+                    <label for="mo">Mo:</label>
+                    <select class="select-rechner" id="typMo">
+                        <option value="NA">N/A</option>
+                        <option value="Vielfrass">Vielfrass</option>
+                        <option value="Genügsam">Genügsam</option>
+                    </select>
+                    <input class="tipp-rechner" type="number" id="betragMo" min="0" placeholder="Tipp">
+                </div>
+                <div class="rechner-zeile">
+                    <label for="ramon">Ramon:</label>
+                    <select class="select-rechner" id="typRamon">
+                        <option value="NA">N/A</option>
+                        <option value="Vielfrass">Vielfrass</option>
+                        <option value="Genügsam">Genügsam</option>
+                    </select>
+                    <input class="tipp-rechner" type="number" id="betragRamon" min="0" placeholder="Tipp">
+                </div>
+                <div class="rechner-zeile">
+                    <label for="raphi">Raphi:</label>
+                    <select class="select-rechner" id="typRaphi">
+                        <option value="NA">N/A</option>
+                        <option value="Vielfrass">Vielfrass</option>
+                        <option value="Genügsam">Genügsam</option>
+                    </select>
+                    <input class="tipp-rechner" type="number" id="betragRaphi" min="0" placeholder="Tipp">
+                </div>
+                <div class="rechner-zeile">
+                    <label for="roman">Roman:</label>
+                    <select class="select-rechner" id="typRoman">
+                        <option value="NA">N/A</option>
+                        <option value="Vielfrass">Vielfrass</option>
+                        <option value="Genügsam">Genügsam</option>
+                    </select>
+                    <input class="tipp-rechner" type="number" id="betragRoman" min="0" placeholder="Tipp">
+                </div>
+                <div class="rechner-zeile">
+                    <label for="thomi">Thomi:</label>
+                    <select class="select-rechner" id="typThomi">
+                        <option value="NA">N/A</option>
+                        <option value="Vielfrass">Vielfrass</option>
+                        <option value="Genügsam">Genügsam</option>
+                    </select>
+                    <input class="tipp-rechner" type="number" id="betragThomi" min="0" placeholder="Tipp">
+                </div>
+                <div class="rechner-zeile">
+                    <label for="trinkgeld">Trinkgeld:</label>
+                    <select class="input-rechner" id="trinkgeld">
+                        <option value="Auto">Automatisch</option>
+                        <option value="0">0%</option>
+                        <option value="0.05">5%</option>
+                        <option value="0.10">10%</option>
+                    </select>
+                </div>
+                <div class="rechner-zeile">
+                    <label for="rechnung">Rechnungsbetrag:</label>
+                    <input class="betrag-input-rechner" type="number" id="rechnung" min="0" max="5000" placeholder="Betrag">
+                </div>
+                <div class="rechner-buttons">
+                    <button class="button" onclick="berechneTotalBillBro(); berechneDifferenzenUndZeigeErgebnisse()">Start</button>
+                    <button class="button" onclick="seiteZuruecksetzen()">Löschen</button>
+                </div>
+            <h2>Ergebnisse</h2>
             </div>
-            <div class="rechner-zeile">
-                <label for="andy">Andy:</label>
-                <select class="select-rechner" id="typAndy">
-                    <option value="NA">N/A</option>
-                    <option value="Vielfrass">Vielfrass</option>
-                    <option value="Genügsam">Genügsam</option>
-                </select>
-                <input class="tipp-rechner" type="number" id="betragAndy" min="0" placeholder="Tipp">
+
+            <div class="ergebnisse" id="ergebnisse">
+                <div class="ergebniszeile"><span class="ergebnistitelFett">Total:</span> <span class="ergebniswertFett" id="totalErgebnis">-</span></div>
+                <div class="ergebniszeile"><span class="ergebnistitel">Trinkgeld:</span> <span class="ergebniswert" id="trinkgeldBetragErgebnis">-</span></div>
+                <div class="ergebniszeile"><span class="ergebnistitel">Trinkgeld %:</span> <span class="ergebniswert" id="trinkgeldProzentErgebnis">-</span></div>
+                <br>
+                <div class="ergebniszeile"><span class="ergebnistitelFett">Betrag Vielfrasse:</span> <span class="ergebniswertFett" id="betrag1Ergebnis">-</span></div>
+                <div class="ergebniszeile"><span class="ergebnistitelFett">Betrag Genügsame:</span> <span class="ergebniswertFett" id="betrag2Ergebnis">-</span></div>
+                <br>
+                <div class="ergebniszeile"><span class="ergebnistitel">Restaurant:</span> <span class="ergebniswert" id="restaurantErgebnis">-</span></div>
+                <div class="ergebniszeile"><span class="ergebnistitel">Gruppengrösse:</span> <span class="ergebniswert" id="gruppeErgebnis">-</span></div>
+                <div class="ergebniszeile"><span class="ergebnistitel">Anzahl Vielfrasse:</span> <span class="ergebniswert" id="vielfrassErgebnis">-</span></div>
+                <div class="ergebniszeile"><span class="ergebnistitel">Anzahl Genügsame:</span> <span class="ergebniswert" id="genuegsamErgebnis">-</span></div>
+                <div class="ergebniszeile"><span class="ergebnistitel">Durchschnittsbetrag:</span> <span class="ergebniswert" id="durchschnittErgebnis">-</span></div>
             </div>
-            <div class="rechner-zeile">
-                <label for="cedi">Cedi:</label>
-                <select class="select-rechner" id="typCedi">
-                    <option value="NA">N/A</option>
-                    <option value="Vielfrass">Vielfrass</option>
-                    <option value="Genügsam">Genügsam</option>
-                </select>
-                <input class="tipp-rechner" type="number" id="betragCedi" min="0" placeholder="Tipp">
-            </div>
-            <div class="rechner-zeile">
-                <label for="dave">Dave:</label>
-                <select class="select-rechner" id="typDave">
-                    <option value="NA">N/A</option>
-                    <option value="Vielfrass">Vielfrass</option>
-                    <option value="Genügsam">Genügsam</option>
-                </select>
-                <input class="tipp-rechner" type="number" id="betragDave" min="0" placeholder="Tipp">
-            </div>
-            <div class="rechner-zeile">
-                <label for="fabio">Fabio:</label>
-                <select class="select-rechner" id="typFabio">
-                    <option value="NA">N/A</option>
-                    <option value="Vielfrass">Vielfrass</option>
-                    <option value="Genügsam">Genügsam</option>
-                </select>
-                <input class="tipp-rechner" type="number" id="betragFabio" min="0" placeholder="Tipp">
-            </div>
-            <div class="rechner-zeile">
-                <label for="kevin">Kevin:</label>
-                <select class="select-rechner" id="typKevin">
-                    <option value="NA">N/A</option>
-                    <option value="Vielfrass">Vielfrass</option>
-                    <option value="Genügsam">Genügsam</option>
-                </select>
-                <input class="tipp-rechner" type="number" id="betragKevin" min="0" placeholder="Tipp">
-            </div>
-            <div class="rechner-zeile">
-                <label for="marco">Marco:</label>
-                <select class="select-rechner" id="typMarco">
-                    <option value="NA">N/A</option>
-                    <option value="Vielfrass">Vielfrass</option>
-                    <option value="Genügsam">Genügsam</option>
-                </select>
-                <input class="tipp-rechner" type="number" id="betragMarco" min="0" placeholder="Tipp">
-            </div>
-            <div class="rechner-zeile">
-                <label for="mo">Mo:</label>
-                <select class="select-rechner" id="typMo">
-                    <option value="NA">N/A</option>
-                    <option value="Vielfrass">Vielfrass</option>
-                    <option value="Genügsam">Genügsam</option>
-                </select>
-                <input class="tipp-rechner" type="number" id="betragMo" min="0" placeholder="Tipp">
-            </div>
-            <div class="rechner-zeile">
-                <label for="ramon">Ramon:</label>
-                <select class="select-rechner" id="typRamon">
-                    <option value="NA">N/A</option>
-                    <option value="Vielfrass">Vielfrass</option>
-                    <option value="Genügsam">Genügsam</option>
-                </select>
-                <input class="tipp-rechner" type="number" id="betragRamon" min="0" placeholder="Tipp">
-            </div>
-            <div class="rechner-zeile">
-                <label for="raphi">Raphi:</label>
-                <select class="select-rechner" id="typRaphi">
-                    <option value="NA">N/A</option>
-                    <option value="Vielfrass">Vielfrass</option>
-                    <option value="Genügsam">Genügsam</option>
-                </select>
-                <input class="tipp-rechner" type="number" id="betragRaphi" min="0" placeholder="Tipp">
-            </div>
-            <div class="rechner-zeile">
-                <label for="roman">Roman:</label>
-                <select class="select-rechner" id="typRoman">
-                    <option value="NA">N/A</option>
-                    <option value="Vielfrass">Vielfrass</option>
-                    <option value="Genügsam">Genügsam</option>
-                </select>
-                <input class="tipp-rechner" type="number" id="betragRoman" min="0" placeholder="Tipp">
-            </div>
-            <div class="rechner-zeile">
-                <label for="thomi">Thomi:</label>
-                <select class="select-rechner" id="typThomi">
-                    <option value="NA">N/A</option>
-                    <option value="Vielfrass">Vielfrass</option>
-                    <option value="Genügsam">Genügsam</option>
-                </select>
-                <input class="tipp-rechner" type="number" id="betragThomi" min="0" placeholder="Tipp">
-            </div>
-            <div class="rechner-zeile">
-                <label for="trinkgeld">Trinkgeld:</label>
-                <select class="input-rechner" id="trinkgeld">
-                    <option value="Auto">Automatisch</option>
-                    <option value="0">0%</option>
-                    <option value="0.05">5%</option>
-                    <option value="0.10">10%</option>
-                </select>
-            </div>
-            <div class="rechner-zeile">
-                <label for="rechnung">Rechnungsbetrag:</label>
-                <input class="betrag-input-rechner" type="number" id="rechnung" min="0" max="5000" placeholder="Betrag">
-            </div>
+            
+            <h2>Rangliste</h2>
+            <div class="rangliste" id="rangliste"></div>
+
             <div class="rechner-buttons">
-                <button class="button" onclick="berechneTotal(); berechneDifferenzenUndZeigeErgebnisse()">Start</button>
-                <button class="button" onclick="seiteZuruecksetzen()">Löschen</button>
+                <button class="button" onclick="speichereErgebnisseBillBro()">Speichern</button>
             </div>
-        <h2>Ergebnisse</h2>
+
         </div>
 
-        <div class="ergebnisse" id="ergebnisse">
-            <div class="ergebniszeile"><span class="ergebnistitelFett">Total:</span> <span class="ergebniswertFett" id="totalErgebnis">-</span></div>
-            <div class="ergebniszeile"><span class="ergebnistitel">Trinkgeld:</span> <span class="ergebniswert" id="trinkgeldBetragErgebnis">-</span></div>
-            <div class="ergebniszeile"><span class="ergebnistitel">Trinkgeld %:</span> <span class="ergebniswert" id="trinkgeldProzentErgebnis">-</span></div>
-            <br>
-            <div class="ergebniszeile"><span class="ergebnistitelFett">Betrag Vielfrasse:</span> <span class="ergebniswertFett" id="betrag1Ergebnis">-</span></div>
-            <div class="ergebniszeile"><span class="ergebnistitelFett">Betrag Genügsame:</span> <span class="ergebniswertFett" id="betrag2Ergebnis">-</span></div>
-            <br>
-            <div class="ergebniszeile"><span class="ergebnistitel">Restaurant:</span> <span class="ergebniswert" id="restaurantErgebnis">-</span></div>
-            <div class="ergebniszeile"><span class="ergebnistitel">Gruppengrösse:</span> <span class="ergebniswert" id="gruppeErgebnis">-</span></div>
-            <div class="ergebniszeile"><span class="ergebnistitel">Anzahl Vielfrasse:</span> <span class="ergebniswert" id="vielfrassErgebnis">-</span></div>
-            <div class="ergebniszeile"><span class="ergebnistitel">Anzahl Genügsame:</span> <span class="ergebniswert" id="genuegsamErgebnis">-</span></div>
-            <div class="ergebniszeile"><span class="ergebnistitel">Durchschnittsbetrag:</span> <span class="ergebniswert" id="durchschnittErgebnis">-</span></div>
-        </div>
-        <h2>Rangliste</h2>
-        <div class="rangliste" id="rangliste"></div>
-        <div class="rechner-buttons">
-            <button class="button" onclick="speichereErgebnisse()">Speichern</button>
-        </div>
-        <script>
-
-            function zeigeErgebnisTabelle(differenzen) {
-                let tabelle = "<table><tr><th>Name</th><th>Differenz</th><th>Rang</th></tr>";
-                differenzen.forEach(d => {
-                    tabelle += `<tr><td>${d.name}</td><td>${d.differenz.toFixed(2)}</td><td>${d.rang}</td></tr>`;
-                });
-                tabelle += "</table>";
-                document.getElementById('ergebnisse').innerHTML = tabelle;
-            }
-
-            function berechneTotal() {
-                const rechnung = parseFloat(document.getElementById('rechnung').value) || 0;
-                const trinkgeldOption = document.getElementById('trinkgeld').value;
-                let trinkgeldProzent = 0;
-                    if (trinkgeldOption === 'Auto') {
-                        trinkgeldProzent = berechneAutoTrinkgeld(rechnung);
-                    } else {
-                        trinkgeldProzent = parseFloat(trinkgeldOption);
-                    };
-                const restaurantName = document.getElementById('restaurant').value;
-
-                const namen = ["Andy", "Cedi", "Dave", "Fabio", "Kevin", "Marco", "Mo", "Ramon", "Raphi", "Roman", "Thomi"];
-                let anzahlVielfrass = 0;
-                let anzahlGenuegsam = 0;
-
-                namen.forEach(name => {
-                    const typ = document.getElementById(`typ${name}`).value;
-                    if (typ === "Vielfrass") {
-                        anzahlVielfrass += 1;
-                    } else if (typ === "Genügsam") {
-                        anzahlGenuegsam += 1;
-                    }
-                });
-
-                const total = rechnung + (rechnung * trinkgeldProzent);
-                const gruppe = anzahlVielfrass + anzahlGenuegsam;
-                const durchschnitt = total / gruppe;
-                const betrag1 = (total / gruppe) + (total / gruppe * 0.25 * anzahlGenuegsam / anzahlVielfrass);
-                const betrag2 = (total / gruppe) * 0.75 * anzahlGenuegsam / anzahlGenuegsam;
-
-                // Setzen der Ergebniswerte
-                document.getElementById('restaurantErgebnis').textContent = restaurantName || "Nicht angegeben";
-                document.getElementById('totalErgebnis').textContent = total.toFixed(0) + ' CHF';
-                document.getElementById('gruppeErgebnis').textContent = gruppe + ' Pers.';
-                document.getElementById('vielfrassErgebnis').textContent = anzahlVielfrass + ' Pers.';
-                document.getElementById('genuegsamErgebnis').textContent = anzahlGenuegsam + ' Pers.';
-                document.getElementById('durchschnittErgebnis').textContent = durchschnitt.toFixed(2) + ' CHF';
-                document.getElementById('betrag1Ergebnis').textContent = betrag1.toFixed(2) + ' CHF';
-                document.getElementById('betrag2Ergebnis').textContent = betrag2.toFixed(2) + ' CHF';
-
-                // Berechnen der Differenzen und Anzeigen in der Rangliste
-                berechneDifferenzenUndZeigeErgebnisse();
-            }
-
-            function berechneDifferenzenUndZeigeErgebnisse() {
-                const rechnungsbetrag = parseFloat(document.getElementById('rechnung').value) || 0;
-                const namen = ["Andy", "Cedi", "Dave", "Fabio", "Kevin", "Marco", "Mo", "Ramon", "Raphi", "Roman", "Thomi"];
-                let differenzen = [];
-
-                namen.forEach(name => {
-                    const typ = document.getElementById(`typ${name}`).value;
-                    const tipp = parseFloat(document.getElementById(`betrag${name}`).value) || 0;
-
-                    if (typ !== "NA") {
-                        const differenz = Math.abs(tipp - rechnungsbetrag);
-                        differenzen.push({ name, differenz });
-                    }
-                });
-
-                // Sortieren der Differenzen
-                differenzen.sort((a, b) => a.differenz - b.differenz);
-
-                // Zuweisung der Ränge
-                for (let i = 0; i < differenzen.length; i++) {
-                    differenzen[i].rang = i + 1;
-                }
-
-                 // Anzeigen der Tabelle
-                zeigeErgebnisTabelle(differenzen);
-            }
-
-            function berechneAutoTrinkgeld(rechnungsbetrag) {
-                let trinkgeldProzent;
-                let aufgerundeterBetrag;
-
-                if (rechnungsbetrag <= 200) {
-                    trinkgeldProzent = 0.095; 
-                    aufgerundeterBetrag = Math.ceil((rechnungsbetrag * (1 + trinkgeldProzent)) / 5) * 5;
-                } else if (rechnungsbetrag <= 500) {
-                    trinkgeldProzent = 0.085    ; // 9% Trinkgeld
-                    aufgerundeterBetrag = Math.ceil((rechnungsbetrag * (1 + trinkgeldProzent)) / 10) * 10;
-                } else if (rechnungsbetrag <= 1000) {
-                    trinkgeldProzent = 0.085; // 9% Trinkgeld
-                    aufgerundeterBetrag = Math.ceil((rechnungsbetrag * (1 + trinkgeldProzent)) / 10) * 10;
-                } else if (rechnungsbetrag <= 1500) {
-                    trinkgeldProzent = 0.08; // 8% Trinkgeld
-                    aufgerundeterBetrag = Math.ceil((rechnungsbetrag * (1 + trinkgeldProzent)) / 10) * 10;
-                } else if (rechnungsbetrag <= 2000) {
-                    trinkgeldProzent = 0.07; // 7% Trinkgeld
-                    aufgerundeterBetrag = Math.ceil((rechnungsbetrag * (1 + trinkgeldProzent)) / 20) * 20;
-                } else {
-                    trinkgeldProzent = 0.05; // 6% Trinkgeld
-                    aufgerundeterBetrag = Math.ceil((rechnungsbetrag * (1 + trinkgeldProzent)) / 50) * 50;
-                }
-
-                let trinkgeld = aufgerundeterBetrag - rechnungsbetrag;
-                let trinkgeldProzentEffektiv = trinkgeld / rechnungsbetrag;
-                
-                document.getElementById ('trinkgeldBetragErgebnis').textContent = trinkgeld.toFixed(0) + ' CHF';
-                document.getElementById ('trinkgeldProzentErgebnis').textContent = (trinkgeldProzentEffektiv * 100).toFixed(2) + '%';
-                return trinkgeldProzentEffektiv;
-            }
-
-            function zeigeErgebnisTabelle(differenzen) {
-                    let tabelle = "<table><tr><th>Name</th><th>Differenz</th><th>Rang</th></tr>";
-                    differenzen.forEach(d => {
-                        tabelle += `<tr><td>${d.name}</td><td>${d.differenz.toFixed(2)}</td><td>${d.rang}</td></tr>`;
-                    });
-                    tabelle += "</table>";
-                    document.getElementById('rangliste').innerHTML = tabelle;
-                    }
-
-                    function seiteZuruecksetzen() {
-                        var bestaetigung = confirm("Wirklich alles löschen?");
-                        if (bestaetigung) {
-                            location.reload(); // Aktualisiert die Seite
-                        }
-            }
-
-            function speichereErgebnisse() {
-                // Bestätigungsdialog anzeigen
-                var bestaetigung = confirm("Ergebnisse werden heruntergeladen. Schicke die Datei Andy oder stelle sie in unseren Chat. Yay, Statistik! :)");
-
-                // Wenn der Benutzer auf "OK" klickt
-                if (bestaetigung) {
-                    // Ergebnisse aus dem Rechner extrahieren
-                    const rechnerErgebnisse = document.getElementById('ergebnisse').textContent;
-
-                    // Ergebnisse aus der Rangliste extrahieren
-                    const ranglisteTabelle = document.getElementById('rangliste').getElementsByTagName('table')[0];
-                    let ranglisteErgebnisse = "Name,Differenz,Rang\n";
-                    for (let i = 1; i < ranglisteTabelle.rows.length; i++) {
-                        for (let j = 0; j < ranglisteTabelle.rows[i].cells.length; j++) {
-                            ranglisteErgebnisse += ranglisteTabelle.rows[i].cells[j].textContent.trim() + (j < ranglisteTabelle.rows[i].cells.length - 1 ? ',' : '\n');
-                        }
-                    }
-
-                    // CSV-Daten zusammensetzen
-                    const csvDaten = "Rechner Ergebnisse:\n" + rechnerErgebnisse + "\n\nRangliste:\n" + ranglisteErgebnisse;
-
-                    // CSV-Datei erstellen und zum Download anbieten
-                    const blob = new Blob([csvDaten], { type: "text/csv;charset=utf-8" });
-                    const url = URL.createObjectURL(blob);
-
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = "ergebnisse.csv";
-                    document.body.appendChild(a);
-                    a.click();
-                    document.body.removeChild(a);
-                    URL.revokeObjectURL(url);
-                }
-            }
-        </script>
-    </div>
-    <footer>
-        <div class="footer">
-            <div class="footer-links">
-                <a href="mailto:frohvollenmaenllichen@gmail.com">
-                    <img src="images/mail_gold.png" alt="E-Mail">
-                </a>
-                <a href="https://www.instagram.com/thegourmen_zh/" target="_blank">
-                    <img src="images/insta_gold.png" alt="Instagram">
-                </a>
+        <footer>
+            <div class="footer">
+                <div class="footer-links">
+                    <a href="mailto:frohvollenmaenllichen@gmail.com">
+                        <img src="images/mail_gold.png" alt="E-Mail">
+                    </a>
+                    <a href="https://www.instagram.com/thegourmen_zh/" target="_blank">
+                        <img src="images/insta_gold.png" alt="Instagram">
+                    </a>
+                </div>
+                <p class="footer-text">Gourmen. Since 2021.</p>
             </div>
-            <p class="footer-text">Gourmen. Since 2021.</p>
-        </div>
-    </footer>
-</body>
+        </footer>
+
+        <script src="script.js"></script> 
+    </body>
 </html>
