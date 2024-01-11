@@ -1,32 +1,37 @@
-/* 
-schwarz: #000000
-weiss: #FFFFFF
-silber: #B9C2C4
+/*//// Farbkombis 
+
+* Schwarz/weiss *
+schwarz: #000000 (0,0,0)
+weiss: #FFFFFF (255,255,255)
+
+* Gold/Grau *
+gold: #947F57
 grau: #6D6D6D
 hellgrau: #E8E8E8
 dunkelgrau: #3D3D3D
-gold: #947F57
-*/
 
-html, body {
-    height: 100%; /* Stellt sicher, dass der HTML- und BODY-Tag die volle Bildschirmhöhe einnehmen */
-    display: flex;
-    flex-direction: column; /* Ordnet Elemente in einer Spalte an */
-}
 
-@media screen and (min-width: 600px) {
-    body {
-    max-width: 600px;
-    align-self: center;
-    }  
-}
+* Blau/Grau *
+Dunkelblau: #2e2b2e
+Graublau: #373a42 (55,58,66)
+Grau: #737673 (115,118,115)
+Creme: #f6efd2 (246,239,210)
 
+Mint: #7C9D8E
+
+////*/
+
+
+
+/*//// Allgemeine styles ////*/
+
+
+/*// Header //*/
 .kopfzeile {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    background-color: #947F57; /* Hintergrundfarbe des Blocks */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -34,9 +39,9 @@ html, body {
     z-index: 1000;
     background: linear-gradient(
         to bottom, 
-        rgba(148, 127, 87, 1) 2%, 
-        rgba(148, 127, 87, 0.6) 66%, 
-        rgba(148, 127, 87, 0.4) 100%
+        rgba(115,118,115, 1) 2%, 
+        rgba(115,118,115, 0.6) 66%, 
+        rgba(115,118,115, 0.4) 100%
     )
 }
 
@@ -47,17 +52,10 @@ html, body {
     max-width: 120px;
 }
 
-.headline{
-    position: absolute;
-    left: 32px;
-    top: 230px; 
-}
 
-.inhalt{
-    padding-top: 100px;
-    flex: 1; /* Nimmt den verfügbaren Platz ein, so dass der Footer unten bleibt */
-}
 
+
+/*// Hamburger Menü //*/
 .hamburger{
     position: relative;
     display: block;
@@ -79,7 +77,6 @@ html, body {
     transition: 0.4s;
 }
 
-
 .hamburger.is-active:before {
     transform: rotate(-45deg) translate(-8px, 6px);
 }
@@ -99,10 +96,9 @@ html, body {
     min-height: 100vh;
     display: block;
     z-index: 98;
-    background-color: #3D3D3D;
+    background-color: #373a42;
     padding-top: 160px;
     transition: 0.4s;
-
 }
 
 .mobile-nav.is-active {
@@ -117,34 +113,64 @@ html, body {
         margin: 0 auto 16px;
         text-align: center; 
         padding: 12px 16px;
-        background-color: #947F57;
+        background-color: #737673;
 
         color: #FFFFFF;
         text-decoration: none;
 }
 
 .mobile-nav a:hover {
-    color: #6D6D6D;
+    color: #2e2b2e;
 }
 
-/* Body */
+
+
+
+
+/*// Body //*/
+html, body {
+    height: 100%; /* Stellt sicher, dass der HTML- und BODY-Tag die volle Bildschirmhöhe einnehmen */
+    display: flex;
+    flex-direction: column; /* Ordnet Elemente in einer Spalte an */
+}
+
 
 body {
-    background-color: #000000;
+    background-color: #2e2b2e;
     font-family: 'Open Sans', sans-serif;
     font-size: 10pt;
 }
+
+@media screen and (min-width: 600px) {
+    body {
+    max-width: 600px;
+    align-self: center;
+    }  
+}
+
+/* Damit Inhalt unter dem Header beginnt und Footer unten bleibt */
+.inhalt {
+    padding-top: 100px;
+    flex: 1; /* Nimmt den verfügbaren Platz ein, so dass der Footer unten bleibt */
+}
+
+
+
+
+
+/*// Titel und Text //*/
 
 h1 {
     font-family: 'Roboto', sans-serif;
     color: #FFFFFF;
     font-size: 34pt;
-    text-align: center
+    text-align: center;
+    text-shadow: 2px 2px 4px #7C9D8E;
 }
 
 h2 {
     font-family: 'Roboto', sans-serif;
-    color: #947F57;
+    color: #7C9D8E;
     font-size: 24pt;
     margin-left: 10px;
 }
@@ -174,8 +200,120 @@ p {
     margin-left: 10px;
 }
 
-/* Rechner */
 
+
+
+/*//// Images (ohne Header und Footer) ////*/
+
+
+.stats-img-hochkant {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin: 0 auto;
+}
+
+
+.bericht-img {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin: 0 auto;
+}
+
+
+
+
+
+/*// Tabellen //*/
+
+/* Stil für Tabellen-Container */
+.agendaTabelle, .naechsteTermine, .rangliste {
+    margin: 0 5px; /* 10px Abstand links und rechts */
+    font-family: 'Open Sans', sans-serif;
+    color: #FFFFFF;
+    background-color: none;
+    padding: 5px;
+    overflow-x: auto;
+}
+
+/* Stil für Tabellen */
+.agendaTabelle table, .naechsteTermine table, .rangliste table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    table-layout: auto; 
+    font-size: 10pt;
+    border: none;
+}
+
+/* Stile für Zellen */
+.agendaTabelle th, .agendaTabelle td, 
+.naechsteTermine th, .naechsteTermine td,
+.rangliste th, .rangliste td {
+    border: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: left;
+    word-wrap: break-word;
+}
+
+/* Stil für Kopfzeilen-Zellen (th) */
+.agendaTabelle th, .naechsteTermine th, .rangliste th {
+    background-color: transparent; /* Keine Hintergrundfarbe für Kopfzeilen-Zellen */
+    color: #FFFFFF; /* Farbe für den Text in Kopfzeilen-Zellen */
+    font-size: 14pt; /* Schriftgröße */
+    font-weight: bold;
+}
+
+/* Stil für alle Tabellenzeilen-Zellen (td) */
+.agendaTabelle td, .naechsteTermine td, .rangliste td {
+    background-color: rgba(148, 127, 87, 0.6); /* Halbtransparentes Weiß für jede zweite Zeile */
+    color: #FFFFFF;
+    text-align: left; /* Textausrichtung */
+}
+
+
+
+/* Stil für jede zweite Zeile */
+.agendaTabelle tr:nth-child(even) td, .naechsteTermine tr:nth-child(even) td, .rangliste tr:nth-child(even) td {
+    background-color: rgb(255, 255, 255, 0.8); /* Hintergrundfarbe für normale Zeilen */
+    color: #000000;
+}
+
+/* Abgerundete Ecken für die erste und letzte Zelle jeder Zeile */
+.agendaTabelle td:first-child, .naechsteTermine td:first-child, .rangliste td:first-child {
+    border-top-left-radius: 10px;
+}
+
+.agendaTabelle td:last-child, .naechsteTermine td:last-child, .rangliste td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+/* Erste Zelle jeder Zeile */
+.agendaTabelle th:first-child, .agendaTabelle td:first-child, 
+.naechsteTermine th:first-child, .naechsteTermine td:first-child {
+    padding-left: 10px; /* Abstand von links */
+}
+
+/* Rechtsbündige Ausrichtung für letzte Spalte */
+.agendaTabelle th:last-child, .agendaTabelle td:last-child, 
+.naechsteTermine th:last-child, .naechsteTermine td:last-child,
+.rangliste th:last-child, .rangliste td:last-child {
+    text-align: right;
+    padding-right: 10px;
+}
+
+
+
+
+
+
+/*//// Rechner ////*/
 .rechner{
     color: #FFFFFF;
     font-size: 12pt;
@@ -214,7 +352,7 @@ p {
     text-align: left;
     flex-basis: 50%; /* Stellt die Breite des Labels ein */
     padding-left: 15px;
-    color: #947F57;
+    color: #7C9D8E;
 }
 
 .rechner-zeile .input-rechner, .rechner-zeile select {
@@ -230,7 +368,7 @@ p {
 
 .button {
     color: #FFFFFF; /* Textfarbe */
-    background-color: #947F57; /* Hintergrundfarbe */
+    background-color: #7C9D8E; /* Hintergrundfarbe */
     border: none; /* Kein Rand */
     border-radius: 10px; /* Abgerundete Ecken */
     padding: 10px 15px; /* Innenabstand */
@@ -244,10 +382,14 @@ p {
 }
     
     .button:hover {
-        color: #B9C2C4; /* Hintergrundfarbe beim Hover */
+        color: #373a42; /* Hintergrundfarbe beim Hover */
     }
 
 
+
+
+
+    /*// Ergebnisee Rechner //*/
 .ergebnisse{
     color: #3D3D3D;
     background-color: #E8E8E8;
@@ -302,88 +444,14 @@ p {
     margin-right: 15px;
 }
 
-/* Stil für Tabellen-Container */
-.agendaTabelle, .naechsteTermine, .rangliste {
-    margin: 0 5px; /* 10px Abstand links und rechts */
-    font-family: 'Open Sans', sans-serif;
-    color: #FFFFFF;
-    background-color: none;
-    padding: 5px;
-    overflow-x: auto;
-}
-
-/* Stil für Tabellen */
-.agendaTabelle table, .naechsteTermine table, .rangliste table {
-    border-collapse: collapse;
-    width: 100%;
-    max-width: 100%;
-    table-layout: auto; 
-    font-size: 10pt;
-    border: none;
-}
-
-/* Stile für Zellen */
-.agendaTabelle th, .agendaTabelle td, 
-.naechsteTermine th, .naechsteTermine td,
-.rangliste th, .rangliste td {
-    border: none;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    text-align: left;
-    word-wrap: break-word;
-}
-
-/* Stil für Kopfzeilen-Zellen (th) */
-.agendaTabelle th, .naechsteTermine th, .rangliste th {
-    background-color: transparent; /* Keine Hintergrundfarbe für Kopfzeilen-Zellen */
-    color: #947F57; /* Farbe für den Text in Kopfzeilen-Zellen */
-    font-size: 14pt; /* Schriftgröße */
-    font-weight: bold;
-}
-
-/* Stil für alle Tabellenzeilen-Zellen (td) */
-.agendaTabelle td, .naechsteTermine td, .rangliste td {
-    background-color: rgba(148, 127, 87, 0.6); /* Halbtransparentes Weiß für jede zweite Zeile */
-    color: #FFFFFF;
-    text-align: left; /* Textausrichtung */
-}
 
 
 
-/* Stil für jede zweite Zeile */
-.agendaTabelle tr:nth-child(even) td, .naechsteTermine tr:nth-child(even) td, .rangliste tr:nth-child(even) td {
-    background-color: rgb(255, 255, 255, 0.8); /* Hintergrundfarbe für normale Zeilen */
-    color: #000000;
-}
 
-/* Abgerundete Ecken für die erste und letzte Zelle jeder Zeile */
-.agendaTabelle td:first-child, .naechsteTermine td:first-child, .rangliste td:first-child {
-    border-top-left-radius: 10px;
-}
-
-.agendaTabelle td:last-child, .naechsteTermine td:last-child, .rangliste td:last-child {
-    border-bottom-right-radius: 10px;
-}
-
-/* Erste Zelle jeder Zeile */
-.agendaTabelle th:first-child, .agendaTabelle td:first-child, 
-.naechsteTermine th:first-child, .naechsteTermine td:first-child {
-    padding-left: 10px; /* Abstand von links */
-}
-
-/* Rechtsbündige Ausrichtung für letzte Spalte */
-.agendaTabelle th:last-child, .agendaTabelle td:last-child, 
-.naechsteTermine th:last-child, .naechsteTermine td:last-child,
-.rangliste th:last-child, .rangliste td:last-child {
-    text-align: right;
-    padding-right: 10px;
-}
-
+/*//// Footer ////*/
 
 .footer {
-    background-color: #000; /* Hintergrundfarbe der Fußzeile */ 
+    background-color: #2e2b2e; /* Hintergrundfarbe der Fußzeile */ 
     text-align: center; /* Zentriert den Text in der Fußzeile */
     display: flex;
     flex-direction: column;
@@ -391,7 +459,7 @@ p {
     }
 
 .footer-text {
-    color: #947F57;
+    color: #737673;
     font-size: 10pt;
     text-align: center;
 }   
@@ -409,19 +477,4 @@ p {
 }
 
 
-.stats-img-hochkant {
-    display: block;
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    margin: 0 auto;
-}
 
-
-.bericht-img {
-    display: block;
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    margin: 0 auto;
-}
