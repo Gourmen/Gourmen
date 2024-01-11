@@ -407,12 +407,12 @@ p {
     background-color: rgba(115,118,115, 0.4);
     font-size: 12pt;
     padding: 5px;
-    padding-top: 15px;
+    padding-top: 10px;
     margin: 5px;
-    box-shadow: 1px 1px 6px #3D3D3D;
+    box-shadow: 1px 1px 4px #FFFFFF;
     left: 32px;
-    border-bottom-right-radius: 30px;
-    border-top-left-radius: 30px;
+    border-bottom-right-radius: 20px;
+    border-top-left-radius: 20px;
     }
 
 .ergebnisse p {
