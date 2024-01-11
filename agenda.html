@@ -1,127 +1,27 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agenda - Gourmen</title>
-    <link rel="icon" href="images/logo_register.jpg" type="image/jpg" sizes="16x16">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://gourmen.github.io/Homepage/agenda.html">
-    <meta property="og:title" content="Gourmen">
-    <meta property="og:description" content="Agenda">
-    <meta property="og:image" content="https://gourmen.github.io/Homepage/images/logo_metadaten.png">
-</head>
-<body>
-    <header class="kopfzeile">
-        <img class="logo-header" src="images/logo_rund.png">
-        <button class="hamburger">
-            <div class="bar"></div>
-        </button>
-    </header>
+function zeigeTabelle(data) {
+    let groupedByYear = data.reduce((acc, row) => {
+        if (!row["Datum"] || row["Datum"].trim() === "") return acc; // Überspringt Zeilen ohne gültiges Datum
+        const year = new Date(row["Datum"]).getFullYear();
+        acc[year] = acc[year] || [];
+        acc[year].push(row);
+        return acc;
+    }, {});
 
-    <div class="mobile-nav">
-        <a href="index.html">Home</a>
-        <a href="billboy.html">BillBoy</a>
-        <a href="billbro.html">BillBro</a>
-        <a href="agenda.html">Agenda</a>
-        <a href="berichte.html">Berichte</a>
-        <a href="stats.html">Stats</a>
-    </div>
-
-    <script>
-        const menu_btn = document.querySelector('.hamburger');
-        const mobile_menu = document.querySelector('.mobile-nav');
-
-        menu_btn.addEventListener('click', function() { 
-            menu_btn.classList.toggle('is-active');
-            mobile_menu.classList.toggle('is-active');
+    let content = "";
+    for (let year in groupedByYear) {
+        content += `<h2>${year}</h2>`; // Fügt eine Überschrift für jedes Jahr hinzu
+        content += "<table border='1'><tr><th>Datum</th><th>Event</th><th>Lead</th><th>Restaurant</th></tr>";
+        groupedByYear[year].forEach(row => {
+            const formatiertesDatum = formatiereDatum(row["Datum"]);
+            content += "<tr>";
+            content += `<td>${formatiertesDatum}</td>`;
+            content += `<td>${row["Anlass"]}</td>`;
+            content += `<td>${row["Lead"]}</td>`;
+            content += `<td>${row["Restaurant"]}</td>`;
+            content += "</tr>";
         });
-    </script>
+        content += "</table>";
+    }
 
-    <div class="inhalt">
-
-        <h1>Agenda</h1>
-            <p>Keeping up with the Gourmen: Hier findest du alle Events seit unserer Gründung. Dazu gehören unsere Monatsessen (ME), Generalversammlungen (GV) und Vereinsausflüge (VA).</p>
-        <br>
-     
-        <div class="agendaTabelle" id="agendaTabelle"></div>
-
-        <script>
-            function ladeCSVDatei(url) {
-                fetch(url)
-                    .then(response => response.text())
-                    .then(text => {
-                        const data = parseCSV(text);
-                        zeigeTabelle(data);
-                    })
-                .catch(error => console.error('Fehler beim Laden der CSV:', error));
-            }
-    
-            function parseCSV(csvText) {
-                const lines = csvText.split('\n');
-                const result = [];
-                const headers = lines[0].split(';');
-    
-                for (let i = 1; i < lines.length; i++) {
-                    const obj = {};
-                    const currentline = lines[i].split(';');
-    
-                    for (let j = 0; j < headers.length; j++) {
-                    obj[headers[j]] = currentline[j];
-                    }
-    
-                    result.push(obj);
-                }
-    
-                return result;
-            }
-
-            function formatiereDatum(isoDatum) {
-                const datumObj = new Date(isoDatum);
-                const tag = datumObj.getDate().toString().padStart(2, '0');
-                const monat = (datumObj.getMonth() + 1).toString().padStart(2, '0'); // Monat beginnt bei 0
-                const jahr = datumObj.getFullYear();
-                return `${tag}.${monat}.${jahr}`; // Format: TT.MM.JJJJ
-            }
-    
-            function zeigeTabelle(data) {
-                let tabelle = "<table border='1'>";
-                    tabelle += "<tr><th>Datum</th><th>Event</th><th>Lead</th><th>Restaurant</th></tr>";
-                
-                    data.forEach(function(row) {
-                        if (!row["Datum"] || row["Datum"].trim() === "") return; // Überspringt Zeilen ohne gültiges Datum
-                        const formatiertesDatum = formatiereDatum(row["Datum"]);
-                        tabelle += "<tr>";
-                        tabelle += "<td>" + formatiertesDatum + "</td>"; 
-                        tabelle += "<td>" + row["Anlass"] + "</td>";
-                        tabelle += "<td>" + row["Lead"] + "</td>";
-                        tabelle += "<td>" + row["Restaurant"] + "</td>";
-                        tabelle += "</tr>";
-                    });
-
-                tabelle += "</table>";
-                document.getElementById('agendaTabelle').innerHTML = tabelle;
-            }
-    
-            // URL der CSV-Datei im Repository
-            ladeCSVDatei('https://gourmen.github.io/Homepage/data/agenda.csv');
-        </script>
-    </div>
-    <footer>
-        <div class="footer">
-            <div class="footer-links">
-                <a href="mailto:frohvollenmaenllichen@gmail.com">
-                    <img src="images/mail_gold.png" alt="E-Mail">
-                </a>
-                <a href="https://www.instagram.com/thegourmen_zh/" target="_blank">
-                    <img src="images/insta_gold.png" alt="Instagram">
-                </a>
-            </div>
-            <p class="footer-text">Gourmen. Since 2021.</p>
-        </div>
-    </footer>   
-</body>
-</html>
+    document.getElementById('agendaTabelle').innerHTML = content;
+}
