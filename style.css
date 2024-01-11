@@ -292,13 +292,18 @@ p {
     color: #000000;
 }
 
-/* Abgerundete Ecken für die erste und letzte Zelle jeder Zeile */
-.agendaTabelle td:first-child, .naechsteTermine td:first-child, .rangliste td:first-child {
-    border-top-left-radius: 10px;
+/* Abgerundete Ecken für die erste Zelle in der zweiten Zeile (nach der Kopfzeile) */
+.agendaTabelle tr:nth-child(2) td:first-child, 
+.naechsteTermine tr:nth-child(2) td:first-child, 
+.rangliste tr:nth-child(2) td:first-child {
+    border-top-left-radius: 15px;
 }
 
-.agendaTabelle td:last-child, .naechsteTermine td:last-child, .rangliste td:last-child {
-    border-bottom-right-radius: 10px;
+/* Abgerundete Ecken für die letzte Zelle in der letzten Zeile */
+.agendaTabelle tr:last-child td:last-child, 
+.naechsteTermine tr:last-child td:last-child, 
+.rangliste tr:last-child td:last-child {
+    border-bottom-right-radius: 15px;
 }
 
 /* Erste Zelle jeder Zeile */
