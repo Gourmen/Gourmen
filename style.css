@@ -403,8 +403,8 @@ p {
 
     /*// Ergebnisee Rechner //*/
 .ergebnisse{
-    color: #3D3D3D;
-    background-color: #E8E8E8;
+    color: #FFFFFF;
+    background-color: rgba(115,118,115, 0.4);
     font-size: 12pt;
     padding: 5px;
     padding-top: 15px;
@@ -414,10 +414,10 @@ p {
     border-bottom-right-radius: 30px;
     border-top-left-radius: 30px;
     }
-    
+
 .ergebnisse p {
-    color: #3D3D3D;
-    background-color: #E8E8E8;
+    color: #FFFFFF;
+    background-color: #7C9D8E;
     font-size: 16pt;
     margin: 5px;
     left: 32px;
@@ -444,6 +444,7 @@ p {
 
 .ergebnistitelFett {
     font-weight: bold;
+    color: #7C9D8E;
     text-align: left;
     flex: 1;
     margin-left: 15px;
@@ -451,6 +452,7 @@ p {
 
 .ergebniswertFett {
     font-weight: bold;
+    color: #7C9D8E;
     text-align: right;
     flex: 1;
     margin-right: 15px;
