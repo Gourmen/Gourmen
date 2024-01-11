@@ -364,7 +364,7 @@ p {
     text-align: left;
     flex-basis: 50%; /* Stellt die Breite des Labels ein */
     padding-left: 15px;
-    color: #7C9D8E;
+    color: #FFFFFF;
 }
 
 .rechner-zeile .input-rechner, .rechner-zeile select {

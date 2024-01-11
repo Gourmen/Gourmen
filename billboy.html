@@ -29,7 +29,6 @@
         <a href="agenda.html">Agenda</a>
         <a href="berichte.html">Berichte</a>
         <a href="stats.html">Stats</a>
-
     </div>
 
     <script>
@@ -51,6 +50,8 @@
             Die Genügsamen zahlen 3/4 des Durchschnittsbetrags, den Rest übernehmen die Vielfrasse. 
             <br><br> Wenn du die Ergebnisse speicherst und die txt-Datei Andy zustellst, gibt's daraus ein paar coole Grafiken - yay, Statistik!
         </p>
+        <br>
+        <h2>Eingabefelder</h2>
         <br>
         <div class="rechner">
             <div class="rechner-zeile">
@@ -81,8 +82,8 @@
             <div class="rechner-buttons">
                 <button class="button" onclick="berechneTotal()">Start</button>
                 <button class="button" onclick="seiteZuruecksetzen()">Löschen</button>
-                <button class="button" onclick="speichereErgebnisse()">Speichern</button>
             </div>
+        <h2>Ergebnisse</h2>
         </div>
 
         <div class="ergebnisse" id="ergebnisse">
@@ -97,6 +98,9 @@
             <div class="ergebniszeile"><span class="ergebnistitel">Gruppengrösse:</span> <span class="ergebniswert" id="gruppeErgebnis">-</span></div>
             <div class="ergebniszeile"><span class="ergebnistitel">Durchschnittsbetrag:</span> <span class="ergebniswert" id="durchschnittErgebnis">-</span></div>
         </div>
+        <div class="rechner-buttons">
+            <button class="button" onclick="speichereErgebnisse()">Speichern</button>
+            </div>
 
         <script>
             function berechneTotal() {

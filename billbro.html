@@ -49,6 +49,7 @@
             <br><br> Personen, die nicht anwesend sind, werden als "N/A" definiert. Sie erhalten automatisch CHF 300 Differenz im Gesamtranking dazugerechnet. Also bleib dran, wenn du die Saison gewinnen willst!           
         </p>
         <br>
+        <h2>Eingabefelder</h2>
         <div class="rechner">
             <div class="rechner-zeile">
                 <label for="restaurant">Restaurant:</label>
@@ -170,6 +171,7 @@
                 <button class="button" onclick="berechneTotal(); berechneDifferenzenUndZeigeErgebnisse()">Start</button>
                 <button class="button" onclick="seiteZuruecksetzen()">Löschen</button>
             </div>
+        <h2>Ergebnisse</h2>
         </div>
 
         <div class="ergebnisse" id="ergebnisse">
@@ -186,11 +188,11 @@
             <div class="ergebniszeile"><span class="ergebnistitel">Anzahl Genügsame:</span> <span class="ergebniswert" id="genuegsamErgebnis">-</span></div>
             <div class="ergebniszeile"><span class="ergebnistitel">Durchschnittsbetrag:</span> <span class="ergebniswert" id="durchschnittErgebnis">-</span></div>
         </div>
-        <div class="rechner-buttons">
-        <button class="button" onclick="speichereErgebnisse()">Speichern</button>
-        </div>
         <h2>Rangliste</h2>
         <div class="rangliste" id="rangliste"></div>
+        <div class="rechner-buttons">
+            <button class="button" onclick="speichereErgebnisse()">Speichern</button>
+        </div>
         <script>
 
             function zeigeErgebnisTabelle(differenzen) {
