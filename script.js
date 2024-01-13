@@ -348,70 +348,121 @@ function speichereErgebnisseBillBro() {
 
 /*//// Agenda ////*/
 
-                function ladeCSVDateiAgenda(url) {
-                    fetch(url)
-                        .then(response => response.text())
-                        .then(text => {
-                            const data = parseCSVAgenda(text);
-                            zeigeTabelleAgenda(data);
-                        })
-                    .catch(error => console.error('Fehler beim Laden der CSV:', error));
-                }
-        
-                function parseCSVAgenda(csvText) {
-                    const lines = csvText.split('\n');
-                    const result = [];
-                    const headers = lines[0].split(';');
-        
-                    for (let i = 1; i < lines.length; i++) {
-                        const obj = {};
-                        const currentline = lines[i].split(';');
-        
-                        for (let j = 0; j < headers.length; j++) {
-                        obj[headers[j]] = currentline[j];
-                        }
-        
-                        result.push(obj);
-                    }
-        
-                    return result;
-                }
+function ladeCSVDateiAgenda(url) {
+    fetch(url)
+        .then(response => response.text())
+        .then(text => {
+            const data = parseCSVAgenda(text);
+            zeigeTabelleAgenda(data);
+        })
+    .catch(error => console.error('Fehler beim Laden der CSV:', error));
+}
 
-                function formatiereDatumAgenda(isoDatum) {
-                    const datumObj = new Date(isoDatum);
-                    const tag = datumObj.getDate().toString().padStart(2, '0');
-                    const monat = (datumObj.getMonth() + 1).toString().padStart(2, '0'); // Monat beginnt bei 0
-                    const jahr = datumObj.getFullYear();
-                    return `${tag}.${monat}.${jahr}`; // Format: TT.MM.JJJJ
-                }
-        
-                function zeigeTabelleAgenda(data) {
-                    let groupedByYear = data.reduce((acc, row) => {
-                        if (!row["Datum"] || row["Datum"].trim() === "") return acc; // Überspringt Zeilen ohne gültiges Datum
-                        const year = new Date(row["Datum"]).getFullYear();
-                        acc[year] = acc[year] || [];
-                        acc[year].push(row);
-                        return acc;
-                    }, {});
+function parseCSVAgenda(csvText) {
+    const lines = csvText.split('\n');
+    const result = [];
+    const headers = lines[0].split(';');
 
-                    let content = "";
-                    for (let year in groupedByYear) {
-                        content += `<h2>${year}</h2>`; // Fügt eine Überschrift für jedes Jahr hinzu
-                        content += "<table border='1'><tr><th>Datum</th><th>Event</th><th>Lead</th><th>Restaurant</th></tr>";
-                        groupedByYear[year].forEach(row => {
-                            const formatiertesDatum = formatiereDatumAgenda(row["Datum"]);
-                            content += "<tr>";
-                            content += `<td>${formatiertesDatum}</td>`;
-                            content += `<td>${row["Anlass"]}</td>`;
-                            content += `<td>${row["Lead"]}</td>`;
-                            content += `<td>${row["Restaurant"]}</td>`;
-                            content += "</tr>";
-                        });
-                        content += "</table><br>";
-                    }
+    for (let i = 1; i < lines.length; i++) {
+        const obj = {};
+        const currentline = lines[i].split(';');
 
-        document.getElementById('agendaTabelle').innerHTML = content;
+        for (let j = 0; j < headers.length; j++) {
+        obj[headers[j]] = currentline[j];
+        }
+
+        result.push(obj);
     }
+
+    return result;
+}
+
+function formatiereDatumAgenda(isoDatum) {
+    const datumObj = new Date(isoDatum);
+    const tag = datumObj.getDate().toString().padStart(2, '0');
+    const monat = (datumObj.getMonth() + 1).toString().padStart(2, '0'); // Monat beginnt bei 0
+    const jahr = datumObj.getFullYear();
+    return `${tag}.${monat}.${jahr}`; // Format: TT.MM.JJJJ
+}
+
+function zeigeTabelleAgenda(data) {
+    let groupedByYear = data.reduce((acc, row) => {
+        if (!row["Datum"] || row["Datum"].trim() === "") return acc; // Überspringt Zeilen ohne gültiges Datum
+        const year = new Date(row["Datum"]).getFullYear();
+        acc[year] = acc[year] || [];
+        acc[year].push(row);
+        return acc;
+    }, {});
+
+    let content = "";
+    for (let year in groupedByYear) {
+        content += `<h2>${year}</h2>`; // Fügt eine Überschrift für jedes Jahr hinzu
+        content += "<table border='1'><tr><th>Datum</th><th>Event</th><th>Lead</th><th>Restaurant</th></tr>";
+        groupedByYear[year].forEach(row => {
+            const formatiertesDatum = formatiereDatumAgenda(row["Datum"]);
+            content += "<tr>";
+            content += `<td>${formatiertesDatum}</td>`;
+            content += `<td>${row["Anlass"]}</td>`;
+            content += `<td>${row["Lead"]}</td>`;
+            content += `<td>${row["Restaurant"]}</td>`;
+            content += "</tr>";
+        });
+        content += "</table><br>";
+    }
+
+        document.getElementById('agendaTabelle').innerHTML = content; 
+}
         
-                // URL der CSV-Datei im Repository
-                ladeCSVDateiAgenda('https://maxandul.github.io/Gourmen/data/agenda.csv');
+// URL der CSV-Datei im Repository
+ladeCSVDateiAgenda('https://maxandul.github.io/Gourmen/data/agenda.csv');
+
+
+
+
+
+
+/*//// Liga Tabelle ////*/
+async function ladeUndVerarbeiteCSVLigaTabelle(url) {
+    const response = await fetch(url);
+    const text = await response.text();
+    return parseCSVLigaTabelle(text);
+}
+
+function parseCSVLigaTabelle(csvText) {
+    let lines = csvText.split('\n');
+    let headers = lines[0].split(';').slice(14); // Nehmen wir an, die Namen beginnen ab der 9. Spalte
+    let data = lines.slice(1);
+
+    let stats = headers.map(name => ({ name, sum: 0, count: 0 }));
+
+    for (let line of data) {
+        let values = line.split(';').slice(14);
+        values.forEach((value, index) => {
+            if (value !== '' && value !== 'N/A') {
+                stats[index].sum += parseFloat(value);
+                stats[index].count++;
+            }
+        });
+    }
+
+    // Berechnen des Durchschnitts und Sortieren
+    stats.forEach(player => {
+        player.average = player.count > 0 ? player.sum / player.count : 0;
+    });
+    stats.sort((a, b) => a.average - b.average);
+
+    return stats;
+}
+
+function erstelleRanglisteLigaTabelle(stats) {
+    let tabelle = '<table><tr><th>Rang</th><th>Name</th><th>Diff. Schnitt</th><th>Spiele</th></tr>';
+    stats.forEach((player, index) => {
+        tabelle += `<tr><td>${index + 1}</td><td>${player.name}</td><td>${player.average.toFixed(2)}</td><td>${player.count}</td></tr>`;
+    });
+    tabelle += '</table>';
+    document.getElementById('rangliste').innerHTML = tabelle;
+}
+
+ladeUndVerarbeiteCSVLigaTabelle('daten/agenda.csv')
+    .then(stats => erstelleRanglisteLigaTabelle(stats))
+    .catch(error => console.error('Fehler beim Laden der CSV:', error));
