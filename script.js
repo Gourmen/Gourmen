@@ -434,15 +434,21 @@ function parseCSVLigaTabelle(csvText) {
     let data = lines.slice(1);
 
     let stats = headers.map(name => ({ name, sum: 0, count: 0 }));
+    let spieleAnzahl = 0;
 
     for (let line of data) {
         let values = line.split(';').slice(13);
+        let isSpiel = false;
+
         values.forEach((value, index) => {
             if (value.trim() !== '' && value !== 'N/A') {
                 stats[index].sum += parseFloat(value);
                 stats[index].count++;
+                isSpiel = true;
             }
         });
+
+        if (isSpiel) spieleAnzahl++; // Zählt nur Zeilen, die tatsächliche Spieleinträge enthalten
     }
 
     // Berechnen des Durchschnitts und Sortieren
@@ -451,18 +457,41 @@ function parseCSVLigaTabelle(csvText) {
     });
     stats.sort((a, b) => (a.average === "N/A" ? 1 : b.average === "N/A" ? -1 : a.average - b.average));
 
-    return stats;
+    return { stats, spieleAnzahl };
 }
+
 
 function erstelleRanglisteLigaTabelle(stats) {
     let tabelle = '<table><tr><th>Rang</th><th>Name</th><th>Diff. Schnitt</th><th>Spiele</th></tr>';
     stats.forEach((player, index) => {
-        tabelle += `<tr><td>${index + 1}</td><td>${player.name}</td><td>${player.average.toFixed(2)}</td><td>${player.count}</td></tr>`;
+        tabelle += `<tr><td>${index + 1}</td><td>${player.name}</td><td>${player.average !== "N/A" ? player.average.toFixed(2) : "N/A"}</td><td>${player.count}</td></tr>`;
     });
     tabelle += '</table>';
     document.getElementById('ranglisteLiga').innerHTML = tabelle;
 }
 
+function erstelleSpielplan(headers, spieleAnzahl) {
+    let tabelle = '<table><tr><th>Namen</th>';
+    for (let i = 1; i <= spieleAnzahl; i++) {
+        tabelle += `<th>${i}</th>`;
+    }
+    tabelle += '</tr>';
+
+    headers.forEach(name => {
+        tabelle += `<tr><td>${name}</td>`;
+        for (let i = 1; i <= spieleAnzahl; i++) {
+            tabelle += '<td></td>'; // Leere Zellen für jedes Spiel
+        }
+        tabelle += '</tr>';
+    });
+
+    tabelle += '</table>';
+    document.getElementById('spielplan').innerHTML = tabelle;
+}
+
 ladeUndVerarbeiteCSVLigaTabelle('https://gourmen.github.io/Homepage/data/agenda.csv')
-    .then(stats => erstelleRanglisteLigaTabelle(stats))
+    .then(({ stats, spieleAnzahl }) => {
+        erstelleRanglisteLigaTabelle(stats);
+        erstelleSpielplan(stats.map(stat => stat.name), spieleAnzahl);
+    })
     .catch(error => console.error('Fehler beim Laden der CSV:', error));
