@@ -259,7 +259,7 @@ p {
 /* Stile für Zellen */
 .agendaTabelle th, .agendaTabelle td, 
 .naechsteTermine th, .naechsteTermine td,
-.rangliste th, .rangliste td 
+.rangliste th, .rangliste td, 
 .ranglisteLiga th, .ranglisteLiga td {
     border: none;
     padding-left: 10px;
@@ -271,7 +271,7 @@ p {
 }
 
 /* Stil für Kopfzeilen-Zellen (th) */
-.agendaTabelle th, .naechsteTermine th, .rangliste th, .ranglisteLiga th{
+.agendaTabelle th, .naechsteTermine th, .rangliste th, .ranglisteLiga th {
     background-color: transparent; /* Keine Hintergrundfarbe für Kopfzeilen-Zellen */
     color: #FFFFFF; /* Farbe für den Text in Kopfzeilen-Zellen */
     font-size: 14pt; /* Schriftgröße */
@@ -288,7 +288,7 @@ p {
 
 
 /* Stil für jede zweite Zeile */
-.agendaTabelle tr:nth-child(even) td, .naechsteTermine tr:nth-child(even) td, .rangliste tr:nth-child(even) td, .ranglisteLiga tr:nth-child(even) {
+.agendaTabelle tr:nth-child(even) td, .naechsteTermine tr:nth-child(even) td, .rangliste tr:nth-child(even) td, .ranglisteLiga tr:nth-child(even) td {
     background-color: rgb(255, 255, 255, 0.8); /* Hintergrundfarbe für normale Zeilen */
     color: #000000;
 }
@@ -318,7 +318,8 @@ p {
 /* Rechtsbündige Ausrichtung für letzte Spalte */
 .agendaTabelle th:last-child, .agendaTabelle td:last-child, 
 .naechsteTermine th:last-child, .naechsteTermine td:last-child,
-.rangliste th:last-child, .rangliste td:last-child {
+.rangliste th:last-child, .rangliste td:last-child,
+.rangliste th:last-child, .ranglisteLigaLiga td:last-child {
     text-align: right;
     padding-right: 10px;
 }

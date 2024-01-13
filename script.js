@@ -463,6 +463,6 @@ function erstelleRanglisteLigaTabelle(stats) {
     document.getElementById('ranglisteLiga').innerHTML = tabelle;
 }
 
-ladeUndVerarbeiteCSVLigaTabelle('https://maxandul.github.io/Gourmen/data/agenda.csv')
+ladeUndVerarbeiteCSVLigaTabelle('https://gourmen.github.io/Homepage/data/agenda.csv')
     .then(stats => erstelleRanglisteLigaTabelle(stats))
     .catch(error => console.error('Fehler beim Laden der CSV:', error));
