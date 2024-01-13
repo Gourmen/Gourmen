@@ -430,13 +430,13 @@ async function ladeUndVerarbeiteCSVLigaTabelle(url) {
 
 function parseCSVLigaTabelle(csvText) {
     let lines = csvText.split('\n');
-    let headers = lines[0].split(';').slice(14); // Nehmen wir an, die Namen beginnen ab der 9. Spalte
+    let headers = lines[0].split(';').slice(13); // Nehmen wir an, die Namen beginnen ab der 9. Spalte
     let data = lines.slice(1);
 
     let stats = headers.map(name => ({ name, sum: 0, count: 0 }));
 
     for (let line of data) {
-        let values = line.split(';').slice(14);
+        let values = line.split(';').slice(13);
         values.forEach((value, index) => {
             if (value !== '' && value !== 'N/A') {
                 stats[index].sum += parseFloat(value);
