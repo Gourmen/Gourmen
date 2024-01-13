@@ -429,8 +429,8 @@ async function ladeUndVerarbeiteCSVLigaTabelle(url) {
 }
 
 function parseCSVLigaTabelle(csvText) {
-    let lines = csvText.split('\n');
-    let headers = lines[0].split(';').slice(13); // Nehmen wir an, die Namen beginnen ab der 9. Spalte
+    let lines = csvText.split('\n').filter(line => line.trim() !== ''); // Filtert leere Zeilen
+    let headers = lines[0].split(';').slice(13); // Die Namen beginnen ab der 13. Spalte
     let data = lines.slice(1);
 
     let stats = headers.map(name => ({ name, sum: 0, count: 0 }));
@@ -438,7 +438,7 @@ function parseCSVLigaTabelle(csvText) {
     for (let line of data) {
         let values = line.split(';').slice(13);
         values.forEach((value, index) => {
-            if (value !== '' && value !== 'N/A') {
+            if (value.trim() !== '' && value !== 'N/A') {
                 stats[index].sum += parseFloat(value);
                 stats[index].count++;
             }
@@ -447,9 +447,9 @@ function parseCSVLigaTabelle(csvText) {
 
     // Berechnen des Durchschnitts und Sortieren
     stats.forEach(player => {
-        player.average = player.count > 0 ? player.sum / player.count : 0;
+        player.average = player.count > 0 ? player.sum / player.count : "N/A";
     });
-    stats.sort((a, b) => a.average - b.average);
+    stats.sort((a, b) => (a.average === "N/A" ? 1 : b.average === "N/A" ? -1 : a.average - b.average));
 
     return stats;
 }
