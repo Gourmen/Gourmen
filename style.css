@@ -380,13 +380,13 @@ p {
 
 .button {
     color: #FFFFFF; /* Textfarbe */
-    background-color: #947F57; /* Hintergrundfarbe */
-    border: none; /* Kein Rand */
+    background-color: rgba(148, 127, 87, 0.6); /* Hintergrundfarbe */
+    border: 1px solid rgb(255, 255, 255, 0.8);
     border-radius: 10px; /* Abgerundete Ecken */
     padding: 10px 15px; /* Innenabstand */
     margin-top: 30px; /* Außenabstand */
     margin-bottom: 30px;
-    box-shadow: 1px 1px 4px #FFFFFF; /* Schatten */
+    box-shadow: 1px 1px 4px rgb(255, 255, 255, 0.8); /* Schatten */
     font-family: 'Open Sans', sans-serif; /* Schriftart */
     font-size: 12pt; /* Größere Schriftgröße */
     cursor: pointer; /* Cursor-Stil */
