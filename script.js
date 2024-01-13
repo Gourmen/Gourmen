@@ -460,9 +460,9 @@ function erstelleRanglisteLigaTabelle(stats) {
         tabelle += `<tr><td>${index + 1}</td><td>${player.name}</td><td>${player.average.toFixed(2)}</td><td>${player.count}</td></tr>`;
     });
     tabelle += '</table>';
-    document.getElementById('rangliste').innerHTML = tabelle;
+    document.getElementById('ranglisteLiga').innerHTML = tabelle;
 }
 
-ladeUndVerarbeiteCSVLigaTabelle('daten/agenda.csv')
+ladeUndVerarbeiteCSVLigaTabelle('https://maxandul.github.io/Gourmen/data/agenda.csv')
     .then(stats => erstelleRanglisteLigaTabelle(stats))
     .catch(error => console.error('Fehler beim Laden der CSV:', error));

@@ -237,7 +237,7 @@ p {
 /*// Tabellen //*/
 
 /* Stil für Tabellen-Container */
-.agendaTabelle, .naechsteTermine, .rangliste {
+.agendaTabelle, .naechsteTermine, .rangliste, .ranglisteLiga {
     margin: 0 5px; /* 10px Abstand links und rechts */
     font-family: 'Open Sans', sans-serif;
     color: #FFFFFF;
@@ -247,7 +247,7 @@ p {
 }
 
 /* Stil für Tabellen */
-.agendaTabelle table, .naechsteTermine table, .rangliste table {
+.agendaTabelle table, .naechsteTermine table, .rangliste table, .ranglisteLiga table {
     border-collapse: collapse;
     width: 100%;
     max-width: 100%;
@@ -259,7 +259,8 @@ p {
 /* Stile für Zellen */
 .agendaTabelle th, .agendaTabelle td, 
 .naechsteTermine th, .naechsteTermine td,
-.rangliste th, .rangliste td {
+.rangliste th, .rangliste td 
+.ranglisteLiga th, .ranglisteLiga td {
     border: none;
     padding-left: 10px;
     padding-right: 10px;
@@ -270,7 +271,7 @@ p {
 }
 
 /* Stil für Kopfzeilen-Zellen (th) */
-.agendaTabelle th, .naechsteTermine th, .rangliste th {
+.agendaTabelle th, .naechsteTermine th, .rangliste th, .ranglisteLiga th{
     background-color: transparent; /* Keine Hintergrundfarbe für Kopfzeilen-Zellen */
     color: #FFFFFF; /* Farbe für den Text in Kopfzeilen-Zellen */
     font-size: 14pt; /* Schriftgröße */
@@ -278,7 +279,7 @@ p {
 }
 
 /* Stil für alle Tabellenzeilen-Zellen (td) */
-.agendaTabelle td, .naechsteTermine td, .rangliste td {
+.agendaTabelle td, .naechsteTermine td, .rangliste td, .ranglisteLiga td {
     background-color: rgba(148, 127, 87, 0.6); /* Halbtransparentes Weiß für jede zweite Zeile */
     color: #FFFFFF;
     text-align: left; /* Textausrichtung */
@@ -287,7 +288,7 @@ p {
 
 
 /* Stil für jede zweite Zeile */
-.agendaTabelle tr:nth-child(even) td, .naechsteTermine tr:nth-child(even) td, .rangliste tr:nth-child(even) td {
+.agendaTabelle tr:nth-child(even) td, .naechsteTermine tr:nth-child(even) td, .rangliste tr:nth-child(even) td, .ranglisteLiga tr:nth-child(even) {
     background-color: rgb(255, 255, 255, 0.8); /* Hintergrundfarbe für normale Zeilen */
     color: #000000;
 }
@@ -295,20 +296,22 @@ p {
 /* Abgerundete Ecken für die erste Zelle in der zweiten Zeile (nach der Kopfzeile) */
 .agendaTabelle tr:nth-child(2) td:first-child, 
 .naechsteTermine tr:nth-child(2) td:first-child, 
-.rangliste tr:nth-child(2) td:first-child {
+.rangliste tr:nth-child(2) td:first-child, 
+.ranglisteLiga tr:nth-child(2) td:first-child {
     border-top-left-radius: 15px;
 }
 
 /* Abgerundete Ecken für die letzte Zelle in der letzten Zeile */
 .agendaTabelle tr:last-child td:last-child, 
 .naechsteTermine tr:last-child td:last-child, 
-.rangliste tr:last-child td:last-child {
+.rangliste tr:last-child td:last-child,
+.ranglisteLiga tr:last-child td:last-child {
     border-bottom-right-radius: 15px;
 }
 
 /* Erste Zelle jeder Zeile */
 .agendaTabelle th:first-child, .agendaTabelle td:first-child, 
-.naechsteTermine th:first-child, .naechsteTermine td:first-child {
+.naechsteTermine th:first-child, .naechsteTermine td:first-child,  {
     padding-left: 10px; /* Abstand von links */
 }
 
