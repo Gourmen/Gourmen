@@ -31,27 +31,29 @@
         <a href="stats.html">Stats</a>
         <a href="gggl.html">GGGL</a>
     </div>
-    <script>
-        const menu_btn = document.querySelector('.hamburger');
-        const mobile_menu = document.querySelector('.mobile-nav');
-
-        menu_btn.addEventListener('click', function() { 
-            menu_btn.classList.toggle('is-active');
-            mobile_menu.classList.toggle('is-active');
-        });
-    </script>
 
     <div class="inhalt">
         <h1>Stats</h1>
-        <h2>Events</h2>
+        <p>Hier findest diverse Statistiken über unser Vereinsleben. Klicke auf das +/-, um Informationen ein- und auszublenden.</p>
+        <h2 class="accordion">Events</h2>
+        <div class="panel">
         <p>Seit dem 21. November 2021 bis heute haben neben der Gründungsversammlung<br><br>
-                - 21 Monatsessen <br>
+                - 22 Monatsessen <br>
                 - 2 Vereinsausflüge und <br>
                 - 2 Generalversammlungen <br><br>
         stattgefunden. Erst ein einziger offizieller Termin fiel mangels Teilnehmer aus. Keep it up!</p> 
-        <h2>Küche</h2> 
-        <p>Wir Gourmen sind Geschmacksentdecker und lieben die Küche aus aller Welt. Hier unsere Hitlist:</p>
-        <img class="stats-img-hochkant" src="images/küche_grau_mint.png" alt="küche_stats">
+    </div>
+        <h2 class="accordion">Küchen</h2>
+        <div class="panel">
+            <p>Wir Gourmen sind Geschmacksentdecker und lieben die Küche aus aller Welt. Hier unsere Hitlist:</p>
+            <img class="stats-img-hochkant" src="images/küche_grau_mint.png" alt="küche_stats">
+        </div>
+
+        <h2 class="accordion">Ortschaften</h2> 
+        <div class="panel">
+            <p>In Zürich gibt's halt viel, aber man könnte uns im Moment schon noch als Nesthocker bezeichnen:</p>
+            <img class="stats-img-hochkant" src="images/ortschaften_grau_mint.png" alt="ortschaften_stats">
+        </div>
     </div>
     <footer>
         <div class="footer">
@@ -66,5 +68,6 @@
             <p class="footer-text">Gourmen. Since 2021.</p>
         </div>
     </footer>
+    <script src="script.js"></script>     
 </body>
 </html>

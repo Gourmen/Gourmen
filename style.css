@@ -215,6 +215,44 @@ p {
 
 
 
+/*//// Accordion ////*/
+
+/* Grundlegender Stil für den Akkordeon-Titel */
+.accordion {
+    cursor: pointer; /* Ändert den Cursor zum Handzeiger */
+    padding: 10px; /* Etwas Platz */
+    border: none; /* Kein Rand */
+    text-align: left; /* Linksbündiger Text */
+    outline: none; /* Keine Umrandung beim Fokussieren */
+    transition: 0.4s; /* Animation für das Öffnen/Schließen */
+}
+
+/* Stil für den Akkordeon-Inhalt */
+.panel {
+    padding: 0 18px;
+    background-color: #2e2b2e;
+    display: none;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+/* Symbol für das geschlossene Akkordeon (z.B. ein '+') */
+.accordion::after {
+    content: '\002B'; /* Unicode für das '+' Symbol */
+    font-size: 30pt;
+    color: #7C9D8E;
+    float: right; /* Rechtsbündig */
+    margin-left: 5px;
+}
+
+/* Stiländerung, wenn das Akkordeon aktiv ist */
+.accordion.active::after {
+    content: "\2212"; /* Unicode für das '-' Symbol */
+    font-size: 30pt;
+}
+
+
+
 
 /*//// Images (ohne Header und Footer) ////*/
 

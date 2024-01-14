@@ -8,6 +8,24 @@ menu_btn.addEventListener('click', function() {
 });
 
 
+/*//// Accordion ////*/
+document.querySelectorAll('.accordion').forEach(button => {
+    button.addEventListener('click', () => {
+        button.classList.toggle('active');
+
+        let panel = button.nextElementSibling;
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        }
+    });
+});
+
+
+
+
+
 /*//// Nächste Termine ////*/
 
 function ladeUndZeigeAgendaNaechsteTermine(url) {
@@ -429,26 +447,27 @@ async function ladeUndVerarbeiteCSVLigaTabelle(url) {
 }
 
 function parseCSVLigaTabelle(csvText) {
-    let lines = csvText.split('\n').filter(line => line.trim() !== ''); // Filtert leere Zeilen
+    let lines = csvText.split('\n').filter(line => line.trim() !== '');
     let headers = lines[0].split(';').slice(13); // Die Namen beginnen ab der 13. Spalte
     let data = lines.slice(1);
 
-    let stats = headers.map(name => ({ name, sum: 0, count: 0 }));
-    let spieleAnzahl = 0;
+    let stats = headers.map(name => ({ name, sum: 0, count: 0, spiele: [] }));
 
     for (let line of data) {
         let values = line.split(';').slice(13);
-        let isSpiel = false;
+        let isSpiel = values.some(value => value.trim() !== '' && value !== 'N/A');
 
-        values.forEach((value, index) => {
-            if (value.trim() !== '' && value !== 'N/A') {
-                stats[index].sum += parseFloat(value);
-                stats[index].count++;
-                isSpiel = true;
-            }
-        });
-
-        if (isSpiel) spieleAnzahl++; // Zählt nur Zeilen, die tatsächliche Spieleinträge enthalten
+        if (isSpiel) {
+            values.forEach((value, index) => {
+                if (value.trim() !== '' && value !== 'N/A') {
+                    stats[index].sum += parseFloat(value);
+                    stats[index].count++;
+                    stats[index].spiele.push(value); // Füge das Ergebnis dem jeweiligen Spieler hinzu
+                } else {
+                    stats[index].spiele.push(''); // Füge einen leeren String hinzu, wenn kein Ergebnis vorhanden ist
+                }
+            });
+        }
     }
 
     // Berechnen des Durchschnitts und Sortieren
@@ -457,9 +476,8 @@ function parseCSVLigaTabelle(csvText) {
     });
     stats.sort((a, b) => (a.average === "N/A" ? 1 : b.average === "N/A" ? -1 : a.average - b.average));
 
-    return { stats, spieleAnzahl };
+    return { stats, spieleAnzahl: stats[0].spiele.length };
 }
-
 
 function erstelleRanglisteLigaTabelle(stats) {
     let tabelle = '<table><tr><th>Rang</th><th>Name</th><th>Diff. Schnitt</th><th>Spiele</th></tr>';
@@ -470,18 +488,18 @@ function erstelleRanglisteLigaTabelle(stats) {
     document.getElementById('ranglisteLiga').innerHTML = tabelle;
 }
 
-function erstelleSpielplan(headers, spieleAnzahl) {
+function erstelleSpielplan(stats) {
     let tabelle = '<table><tr><th>Namen</th>';
-    for (let i = 1; i <= spieleAnzahl; i++) {
+    for (let i = 1; i <= stats[0].spiele.length; i++) {
         tabelle += `<th>${i}</th>`;
     }
     tabelle += '</tr>';
 
-    headers.forEach(name => {
-        tabelle += `<tr><td>${name}</td>`;
-        for (let i = 1; i <= spieleAnzahl; i++) {
-            tabelle += '<td></td>'; // Leere Zellen für jedes Spiel
-        }
+    stats.forEach(player => {
+        tabelle += `<tr><td>${player.name}</td>`;
+        player.spiele.forEach(spiel => {
+            tabelle += `<td>${spiel}</td>`; // Füge das Ergebnis für jedes Spiel ein
+        });
         tabelle += '</tr>';
     });
 
@@ -490,8 +508,8 @@ function erstelleSpielplan(headers, spieleAnzahl) {
 }
 
 ladeUndVerarbeiteCSVLigaTabelle('https://gourmen.github.io/Homepage/data/agenda.csv')
-    .then(({ stats, spieleAnzahl }) => {
+    .then(({ stats }) => {
         erstelleRanglisteLigaTabelle(stats);
-        erstelleSpielplan(stats.map(stat => stat.name), spieleAnzahl);
+        erstelleSpielplan(stats);
     })
     .catch(error => console.error('Fehler beim Laden der CSV:', error));
