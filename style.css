@@ -218,7 +218,7 @@ p {
 /*//// dion ////*/
 
 /* Grundlegender Stil für den Akkordeon-Titel */
-.dion {
+.accordion {
     cursor: pointer; /* Ändert den Cursor zum Handzeiger */
     border: none; /* Kein Rand */
     text-align: left; /* Linksbündiger Text */
@@ -235,7 +235,7 @@ p {
 }
 
 /* Symbol für das geschlossene Akkordeon (z.B. ein '+') */
-.dion::after {
+.accordion::after {
     content: '\002B'; /* Unicode für das '+' Symbol */
     font-size: 24pt;
     font-weight: lighter;
@@ -245,13 +245,13 @@ p {
 }
 
 /* Stiländerung, wenn das Akkordeon aktiv ist */
-.dion.active::after {
+.accordion.active::after {
     content: "\2212"; /* Unicode für das '-' Symbol */
     font-size: 24pt;
     font-weight: lighter;
 }
 
-.dion.active + .panel {
+.accordion.active + .panel {
     max-height: 500px; /* Ein hoher Wert, der den gesamten Inhalt umfasst */
 }
 
