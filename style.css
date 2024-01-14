@@ -238,6 +238,7 @@ p {
 .accordion::after {
     content: '\002B'; /* Unicode für das '+' Symbol */
     font-size: 24pt;
+    font-weight: lighter;
     color: #7C9D8E;
     float: right; /* Rechtsbündig */
     margin-left: 5px;
@@ -247,6 +248,7 @@ p {
 .accordion.active::after {
     content: "\2212"; /* Unicode für das '-' Symbol */
     font-size: 24pt;
+    font-weight: lighter;
 }
 
 .accordion.active + .panel {
