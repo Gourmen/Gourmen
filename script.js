@@ -9,15 +9,17 @@ menu_btn.addEventListener('click', function() {
 
 
 /*//// Accordion ////*/
-document.querySelectorAll('.accordion').forEach(button => {
-    button.addEventListener('click', () => {
-        button.classList.toggle('active');
-        let panel = button.nextElementSibling;
-        if (panel.style.maxHeight){
-            panel.style.maxHeight = null;
-        } else {
-            panel.style.maxHeight = panel.scrollHeight + "px";
-        } 
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.accordion').forEach(button => {
+        button.addEventListener('click', () => {
+            const panel = button.nextElementSibling;
+            button.classList.toggle('active');
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + 'px';
+            }
+        });
     });
 });
 
@@ -413,8 +415,8 @@ function zeigeTabelleAgenda(data) {
 
     let content = "";
     for (let year in groupedByYear) {
-        content += `<h2>${year}</h2>`; // Fügt eine Überschrift für jedes Jahr hinzu
-        content += "<table border='1'><tr><th>Datum</th><th>Event</th><th>Lead</th><th>Restaurant</th></tr>";
+        content += `<h2 class="accordion">${year}</h2>`; // Fügt eine Überschrift für jedes Jahr hinzu
+        content += `<div class="panel"><table border='1'><tr><th>Datum</th><th>Event</th><th>Lead</th><th>Restaurant</th></tr>`;
         groupedByYear[year].forEach(row => {
             const formatiertesDatum = formatiereDatumAgenda(row["Datum"]);
             content += "<tr>";
@@ -424,12 +426,30 @@ function zeigeTabelleAgenda(data) {
             content += `<td>${row["Restaurant"]}</td>`;
             content += "</tr>";
         });
-        content += "</table><br>";
+        content += "</table></div><br>";
     }
 
         document.getElementById('agendaTabelle').innerHTML = content; 
+
+            // Binden des Event-Listeners für das Akkordeon nach dem Erstellen der Tabelle
+    bindAccordionEvents();
 }
-        
+
+
+function bindAccordionEvents() {
+    document.getElementById('agendaTabelle').addEventListener('click', function(event) {
+        if (event.target.classList.contains('accordion')) {
+            const accordion = event.target;
+            const panel = accordion.nextElementSibling;
+            accordion.classList.toggle('active');
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + 'px';
+            }
+        }
+    });
+}
 // URL der CSV-Datei im Repository
 ladeCSVDateiAgenda('https://maxandul.github.io/Gourmen/data/agenda.csv');
 
