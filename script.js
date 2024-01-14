@@ -451,7 +451,7 @@ function bindAccordionEvents() {
     });
 }
 // URL der CSV-Datei im Repository
-ladeCSVDateiAgenda('https://maxandul.github.io/Gourmen/data/agenda.csv');
+ladeCSVDateiAgenda('https://gourmen.github.io/Homepage/data/agenda.csv');
 
 
 
