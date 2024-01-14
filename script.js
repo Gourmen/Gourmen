@@ -12,13 +12,12 @@ menu_btn.addEventListener('click', function() {
 document.querySelectorAll('.accordion').forEach(button => {
     button.addEventListener('click', () => {
         button.classList.toggle('active');
-
         let panel = button.nextElementSibling;
-        if (panel.style.display === "block") {
-            panel.style.display = "none";
+        if (panel.style.maxHeight){
+            panel.style.maxHeight = null;
         } else {
-            panel.style.display = "block";
-        }
+            panel.style.maxHeight = panel.scrollHeight + "px";
+        } 
     });
 });
 
