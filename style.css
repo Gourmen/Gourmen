@@ -236,7 +236,7 @@ p {
 
 /* Symbol für das geschlossene Akkordeon (z.B. ein '+') */
 .accordion::after {
-    content: '\25B6'; /* Unicode für das '+' Symbol */
+    content: '\203A'; /* Unicode für das '+' Symbol */
     font-size: 24pt;
     font-weight: lighter;
     color: #7C9D8E;
@@ -246,7 +246,7 @@ p {
 
 /* Stiländerung, wenn das Akkordeon aktiv ist */
 .accordion.active::after {
-    content: "\25BC"; /* Unicode für das '-' Symbol */
+    content: "\2212"; /* Unicode für das '-' Symbol */
     font-size: 24pt;
     font-weight: lighter;
 }
