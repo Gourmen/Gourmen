@@ -242,7 +242,7 @@ p {
     color: #7C9D8E;
     float: right; /* Rechtsbündig */
     margin-left: 5px;
-    margin-right: 10px;
+    margin-right: 15px;
 }
 
 /* Stiländerung, wenn das Akkordeon aktiv ist */
@@ -256,6 +256,9 @@ p {
     max-height: 500px; /* Ein hoher Wert, der den gesamten Inhalt umfasst */
 }
 
+.accordion:focus, .accordion:active {
+    background-color: transparent; /* Setzt einen transparenten Hintergrund für aktive/fokussierte Zustände */
+}
 
 
 /*//// Images (ohne Header und Footer) ////*/
