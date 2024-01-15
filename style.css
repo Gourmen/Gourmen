@@ -257,7 +257,7 @@ p {
 }
 
 .accordion:focus, .accordion:active {
-    background-color: transparent; /* Setzt einen transparenten Hintergrund für aktive/fokussierte Zustände */
+    outline: none; 
 }
 
 
