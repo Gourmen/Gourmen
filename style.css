@@ -257,7 +257,8 @@ p {
 }
 
 .accordion:focus, .accordion:active {
-    outline: none; 
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 
