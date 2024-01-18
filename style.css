@@ -363,7 +363,7 @@ p {
 
 /* Erste Zelle jeder Zeile */
 .agendaTabelle th:first-child, .agendaTabelle td:first-child, 
-.naechsteTermine th:first-child, .naechsteTermine td:first-child,  {
+.naechsteTermine th:first-child, .naechsteTermine td:first-child {
     padding-left: 10px; /* Abstand von links */
 }
 
