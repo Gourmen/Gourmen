@@ -156,6 +156,7 @@ body {
     
     .logo-header {
         width: 120px;
+        -webkit-tap-highlight-color: transparent;
     }
 
     .inhalt {
