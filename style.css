@@ -25,6 +25,10 @@ Mint: #7C9D8E
 
 /*//// Allgemeine styles ////*/
 
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
 
 /*// Header //*/
 .kopfzeile {
@@ -158,10 +162,6 @@ body {
         width: 120px;
     }
 
-    .logo-header:active {
-        outline: none;
-        -webkit-tap-highlight-color: transparent;
-    }
 
     .inhalt {
         margin-top: 120px;
