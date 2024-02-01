@@ -215,6 +215,16 @@ p {
 
 
 
+
+
+/*//// Banner Fotos ////*/
+
+.banner {
+    max-width: 600px;
+}
+
+
+
 /*//// Accordion ////*/
 
 /* Grundlegender Stil für den Akkordeon-Titel */
@@ -265,7 +275,7 @@ p {
 /*//// Images (ohne Header und Footer) ////*/
 
 
-.stats-img-hochkant {
+.portrait-img {
     display: block;
     width: 100%;
     max-width: 300px;
@@ -274,7 +284,7 @@ p {
 }
 
 
-.bericht-img {
+.landscape-img {
     display: block;
     width: 100%;
     max-width: 600px;
