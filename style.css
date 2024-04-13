@@ -23,6 +23,36 @@ Mint: #7C9D8E
 
 
 
+
+/*//// für webapp ////*/
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input, button {
+    margin-bottom: 10px;
+    font-size: 12pt;
+}
+
+.anmeldeformular {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* 100% der Bildschirmhöhe */
+}
+
+#login-form {
+    text-align: center;
+}
+
+input[type="email"],
+input[type="password"],
+
+
 /*//// Allgemeine styles ////*/
 
 * {

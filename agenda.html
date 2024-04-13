@@ -1,63 +1,77 @@
 <!DOCTYPE html>
 <html lang="de">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Agenda - Gourmen</title>
-        <link rel="icon" href="images/logo_register.png" type="image/png" sizes="16x16">
-        <link rel="stylesheet" href="style.css">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="https://gourmen.github.io/HOmepage/agenda.html">
-        <meta property="og:title" content="Gourmen">
-        <meta property="og:description" content="Agenda">
-        <meta property="og:image" content="https://gourmen.github.io/Homepage/images/logo_register.png">
-    </head>
-    <body>
-        <header class="kopfzeile">
-            <a href="https://gourmen.github.io/Homepage/index.html">
-                <img class="logo-header" src="images/logo_rund.png" alt="Gourmen Logo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda - Gourmen</title>
+    <link rel="icon" href="images/logo_register.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gourmen.web.app/">
+    <meta property="og:title" content="Gourmen">
+    <meta property="og:description" content="Agenda">
+    <!-- <meta property="og:image" content="https://gourmen.github.io/Homepage/images/logo_register.png"> -->
+</head>
+<body>
+<header class="kopfzeile">
+    <a href="https://gourmen.web.app/">
+        <img class="logo-header" src="images/logo_rund.png" alt="Gourmen Logo">
+    </a>
+    <button class="hamburger">
+        <div class="bar"></div>
+    </button>
+</header>
+
+<div class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="billboy.html">BillBoy</a>
+    <a href="billbro.html">BillBro</a>
+    <a href="agenda.html">Agenda</a>
+    <a href="berichte.html">Berichte</a>
+    <a href="stats.html">Stats</a>
+    <a href="gggl.html">GGGL</a>
+</div>
+
+<div class="inhalt">
+    <h1>Agenda</h1>
+    <p>Keeping up with the Gourmen: Hier findest du alle Events seit unserer Gründung. Dazu gehören unsere Monatsessen (ME), Generalversammlungen (GV) und Vereinsausflüge (VA).</p>
+    <div class="agendaTabelle" id="agendaTable">
+        <table>
+            <thead>
+                <tr>
+                    <th>Datum</th>
+                    <th>Anlass</th>
+                    <th>Restaurant</th>
+                    <th>Lead</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Hier werden die Daten eingefügt -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<footer>
+    <div class="footer">
+        <div class="footer-links">
+            <a href="mailto:frohvollenmaenllichen@gmail.com">
+                <img src="images/mail_gold.png" alt="E-Mail">
             </a>
-            <button class="hamburger">
-                <div class="bar"></div>
-            </button>
-        </header>
-
-        <div class="mobile-nav">
-            <a href="index.html">Home</a>
-            <a href="billboy.html">BillBoy</a>
-            <a href="billbro.html">BillBro</a>
-            <a href="agenda.html">Agenda</a>
-            <a href="berichte.html">Berichte</a>
-            <a href="stats.html">Stats</a>
-            <a href="gggl.html">GGGL</a>
+            <a href="https://www.instagram.com/thegourmen_zh/" target="_blank">
+                <img src="images/insta_gold.png" alt="Instagram">
+            </a>
         </div>
+        <p class="footer-text">Gourmen. Since 2021.</p>
+    </div>
+</footer>
 
-        <div class="inhalt">
-
-            <h1>Agenda</h1>
-                <p>Keeping up with the Gourmen: Hier findest du alle Events seit unserer Gründung. Dazu gehören unsere Monatsessen (ME), Generalversammlungen (GV) und Vereinsausflüge (VA).</p>
-        
-            <div class="agendaTabelle" id="agendaTabelle"></div>
-
-            
-        </div>
-
-        <footer>
-            <div class="footer">
-                <div class="footer-links">
-                    <a href="mailto:frohvollenmaenllichen@gmail.com">
-                        <img src="images/mail_gold.png" alt="E-Mail">
-                    </a>
-                    <a href="https://www.instagram.com/thegourmen_zh/" target="_blank">
-                        <img src="images/insta_gold.png" alt="Instagram">
-                    </a>
-                </div>
-                <p class="footer-text">Gourmen. Since 2021.</p>
-            </div>
-        </footer> 
-
-        <script src="script.js"></script>  
-    </body>
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js"></script>
+<script src="firebase-config.js"></script>
+<script src="agenda.js"></script>
+<script src="script.js"></script>  
+</body>
 </html>

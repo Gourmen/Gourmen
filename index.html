@@ -9,54 +9,30 @@ d<!DOCTYPE html>
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
         <meta property="og:type" content="website">
-        <meta property="og:url" content="https://gourmen.github.io/Homepage/index.html">
+        <meta property="og:url" content="https://gourmen.web.app/">
         <meta property="og:title" content="Gourmen">
-        <meta property="og:description" content="Vereinshomepage">
-        <meta property="og:image" content="https://gourmen.github.io/Homepage/images/logo_register.png">
+        <meta property="og:description" content="Anmelden">
+        <!-- <meta property="og:image" content="https://gourmen.github.io/Homepage/images/logo_register.png"> -->
     </head>
     <body>
         <header class="kopfzeile">
-            <a href="https://gourmen.github.io/Homepage/index.html">
+            <a href="https://gourmen.web.app/">
                 <img class="logo-header" src="images/logo_rund.png" alt="Gourmen Logo">
             </a>
-            <button class="hamburger">
-                <div class="bar"></div>
-            </button>
         </header>
 
-        <div class="mobile-nav">
-            <a href="index.html">Home</a>
-            <a href="billboy.html">BillBoy</a>
-            <a href="billbro.html">BillBro</a>
-            <a href="agenda.html">Agenda</a>
-            <a href="berichte.html">Berichte</a>
-            <a href="stats.html">Stats</a>
-            <a href="gggl.html">GGGL</a>
-        </div>
-            
-        <div class="inhalt">
-            <h1>Welcome!</h1>
-            <img class="landscape-img" src="images/gruppenfoto_luzern.png" alt="gruppenfoto_luzern">
-            <p>Schön, bist du da. Hier findest du diverse Infos über das Vereinsleben der Gourmen. Wir arbeiten gerne an uns. Melde dich also, wenn's was gibt (leider haben wir zurzeit noch kein Gruppenfoto mit unserem jüngsten Mitgleid Fabio, das wird asap nachgeholt).</p>
+            <div class="inhalt">
+                <h1>Willkommen auf der Webapp der Gourmen!</h1>
+                <img class="landscape-img" src="images/gruppenfoto_luzern.png" alt="gruppenfoto_luzern">
+            </div>
 
-            <h2>Upcoming Events</h2>
-            <p>Checke regelmässig die kommenden Events. So verpasst du bestimmt keine Termine und auch keine Pflichten:</p>
-            
-            <div class="naechsteTermine" id="naechsteTermine"></div>
-            <p class="legende">ME=Monatsessen; GV=Generalversammlung; VA=Vereinsausflug</p>
-        
-            <h2>Latest News</h2>
-
-            <h3>13.01.2024</h3>
-            <p>Fulminanter Jahresbeginn am gestrigen Monatsessen! Wir starten mit einem feinen italienischen Restaurant in Lachen im schönen Kanton Schwyz. Eine berechtigte Empfehlung von Ramons Chef! Zudem hat BillBro seinen erstern Auftritt und eröffnet damit die Grand Gourmen Guessing League! Verfolge <a class="p-link" href="gggl.html">hier</a> die Saison.</p>
-            
-            <h3>8. Dezember 2023</h3>
-            <p>Wahnsinns Essen im Chianalea! Mit CHF 170.- pro Vielfrass vermutlich bisweil das teuerste Essen, aber zu Weihnachten kann man sich ja gönnen :) Top Location - Vielen Dank, Mo!  </p>
-            
-            <h3>22. November 2023</h3>
-            <p>Nach einer üppigen Völlerei im Schnitzelbaron gilt das Aufnahmeritual als mit Bravour bestanden! Wir begrüssen herzlich Fabio als unser jüngstes Mitglied - schön, dich dabei zu haben!</p>
-        </div>
-    
+            <div class="anmeldeformular">    
+            <form id="login-form">
+                <input type="email" id="email" placeholder="E-Mail" required>
+                <input type="password" id="password" placeholder="Passwort" required>
+                <button type="submit" class="button">Anmelden</button>
+            </form>
+            </div>
         <footer>
             <div class="footer">
                 <div class="footer-links">
@@ -71,7 +47,13 @@ d<!DOCTYPE html>
             </div>
         </footer>
 
-    <script src="script.js"></script>   
+        <!-- Firebase JavaScript SDK einbinden -->
+        <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js"></script>
+
+        <!-- Firebase-Konfiguration -->
+        <script src="firebase-config.js"></script>
 
     </body>
     </html>
